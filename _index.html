@@ -1,0 +1,1876 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache">
+  <link rel="stylesheet" type="text/css" href="css/index.css" />
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+  <!-- add son -->
+  <script type="text/javascript">
+    function num_to_str(num) {
+      let output = '';
+      if (typeof num === 'number') {
+        if (num > 10) {
+          output += num;
+        } else if (num >= 0 && num < 10) {
+          output += `0${num}`
+        }
+      }
+      console.log(output, num);
+      return output;
+    }
+
+    window.onload = function () {
+      var elm = ".home-section";
+      console.log(elm);
+      var page4curImgIdx = 0;
+      var page5curImgIdx = 0;
+      var page6curImgIdx = 0;
+      $(elm).each(function (index) {
+        // 개별적으로 Wheel 이벤트 적용
+        $(this).on("mousewheel DOMMouseScroll", function (e) {
+          e.preventDefault();
+          var delta = 0;
+          var isMoveUp = false;
+          var isMoveDown = false;
+          if (!event) event = window.event;
+          if (event.wheelDelta) {
+            delta = event.wheelDelta / 120;
+            if (window.opera) delta = -delta;
+          } else if (event.detail)
+            delta = -event.detail / 3;
+          var moveTop = $(window).scrollTop();
+          var elmSelecter = $(elm).eq(index);
+          // 마우스휠을 위에서 아래로
+          if (delta < 0) {
+            if ($(elmSelecter).next() != undefined) {
+              try {
+                moveTop = $(elmSelecter).next().offset().top;
+                isMoveUp = false;
+                isMoveDown = true;
+              } catch (e) {}
+            }
+            // 마우스휠을 아래에서 위로
+          } else {
+            if ($(elmSelecter).prev() != undefined) {
+              try {
+                moveTop = $(elmSelecter).prev().offset().top;
+                isMoveUp = true;
+                isMoveDown = false;
+              } catch (e) {}
+            }
+          }
+          if (index == 0) {
+            var vid = $(".myvideo").eq(1).get(0);
+            vid.play();
+            var prevVid = $(".myvideo").eq(0).get(0);
+            prevVid.pause();
+            prevVid.current_time = 0;
+          } else if (index == 1) {
+            if (isMoveUp && !isMoveDown) {
+              var vid = $(".myvideo").eq(0).get(0);
+              vid.play();
+              var prevVid = $(".myvideo").eq(1).get(0);
+              prevVid.pause();
+              prevVid.current_time = 0;
+            } else if (!isMoveUp && isMoveDown) {
+              var vid = $(".myvideo").eq(2).get(0);
+              vid.play();
+              var prevVid = $(".myvideo").eq(1).get(0);
+              prevVid.pause();
+              prevVid.current_time = 0;
+            }
+          } else if (index == 2) {
+            if (isMoveUp && !isMoveDown) {
+              var vid = $(".myvideo").eq(1).get(0);
+              vid.play();
+              var prevVid = $(".myvideo").eq(2).get(0);
+              prevVid.pause();
+              prevVid.current_time = 0;
+            } else if (!isMoveUp && isMoveDown) {
+
+              var prevVid = $(".myvideo").eq(2).get(0);
+              prevVid.pause();
+              prevVid.current_time = 0;
+
+              $(".company-tit").html('');
+
+              let html = '';
+              html += '<li>';
+              html += '   <a class="active">'
+              html += '       <span class="txt">WE WANT TO BE</span>'
+              html += '       <span class="line"></span>'
+              html += '   </a>'
+              html += '</li>'
+              html += '<li>';
+              html += '   <a class="active">'
+              html += '       <span class="txt">YOUR FRIEND</span>'
+              html += '       <span class="line"></span>'
+              html += '   </a>'
+              html += '</li>'
+              $(".company-tit").html(html);
+            }
+          } else if (index == 3) {
+            if (isMoveUp && !isMoveDown) {
+              var vid = $(".myvideo").eq(2).get(0);
+              vid.play();
+            } else if (!isMoveUp && isMoveDown) {
+              $(".tooltip").text("Solution");
+            }
+
+            //<span class="line"></span>
+
+            /* <ul class="company-tit">
+                  <li>
+                    <a class="active">
+                      <span class="txt">WE WANT TO BE</span>
+                      <span class="line"></span>
+                    </a>
+                  </li>
+                  <li>
+                    <a>
+                    <span class="txt">YOUR FRIEND</span>
+                      <span class="line"></span>
+                    </a>
+                  </li>
+                </ul> */
+          }
+          /* <div class="solution-project">
+          <div class="scroll-move">
+            <div class="scroll-num scroll-num-top">01</div>
+            <div class="scroll-bar"></div>
+            <div class="scroll-num scroll-num-bottom">03</div>
+          </div> */
+          //0 0 255
+          //0 0 85
+          if (index == 4) {
+
+
+            // 화면이 위로
+            if (isMoveUp && !isMoveDown) {
+              $(".tooltip").text("core");
+              if (page4curImgIdx != 0) {}
+              $(".home-section.home-section-bg .solution-project .scroll-move .scroll-num-top").css("color",
+                'hsl(0, 0%, 100%)');
+
+
+
+
+
+
+              $(".company-tit").html('');
+
+              let html = '';
+              html += '<li>';
+              html += '   <a class="active">'
+              html += '       <span class="txt">WE WANT TO BE</span>'
+              html += '       <span class="line"></span>'
+              html += '   </a>'
+              html += '</li>'
+              html += '<li>';
+              html += '   <a class="active">'
+              html += '       <span class="txt">YOUR FRIEND</span>'
+              html += '       <span class="line"></span>'
+              html += '   </a>'
+              html += '</li>'
+              $(".company-tit").html(html);
+              //화면이 아래로
+            } else if (!isMoveUp && isMoveDown) {
+              $(".solution-project .scroll-move .scroll-num-top").css("color", 'hsl(0, 0%, 100%)');
+
+            }
+            var imgF = document.querySelector(".imgF");
+            var imgS = document.querySelector(".imgS");
+
+            if (delta < 0) {
+              if (page4curImgIdx >= 2) {
+                // 화면 이동 0.8초(800)
+                $("html,body").stop().animate({
+                  scrollTop: moveTop + 'px'
+                }, {
+                  duration: 800,
+                  complete: function () {}
+                });
+              }
+              if (page4curImgIdx < 2) {
+                page4curImgIdx++;
+              }
+            } else {
+              if (page4curImgIdx == 0) {
+                // 화면 이동 0.8초(800)
+                $("html,body").stop().animate({
+                  scrollTop: moveTop + 'px'
+                }, {
+                  duration: 800,
+                  complete: function () {}
+                });
+              }
+              if (page4curImgIdx > 0) {
+                page4curImgIdx--;
+              }
+            }
+            var target = $(".home-section").eq(index).get(0);
+            const solution_desc = $(target).find(".solution-desc");
+            let html = '';
+            switch (page4curImgIdx) {
+              case 0: {
+                html += '<p class="solution-tit">';
+                html += ' 수원 컨벤션'
+                html += '</p>'
+                html += '<div class="solution-tit-sub">'
+                html += '   <p>실사기반 3D 공간정보 콘텐츠 및</p>'
+                html += '   <p>실시간 데이터 시각화 시스템</p>'
+                html += '</div>'
+
+                solution_desc.html(html);
+
+                break;
+              }
+              case 1: {
+                html += '<p class="solution-tit">';
+                html += ' 백제여유'
+                html += '</p>'
+                html += '<div class="solution-tit-sub">'
+                html += '   <p>공주, 부여 지역 주요 문화재 실사 기반 공간</p>'
+                html += '   <p>정보 및 안내 콘텐츠</p>'
+                html += '</div>'
+
+                solution_desc.html(html);
+
+                break;
+              }
+              case 2: {
+                html += '<p class="solution-tit">';
+                html += ' 봉선로 르 오네뜨 VR'
+                html += '</p>'
+                html += '<div class="solution-tit-sub">'
+                html += '   <p>실사기반 3D 공간정보를 통한</p>'
+                html += '   <p>온라인 모델하우스</p>'
+                html += '</div>'
+
+                solution_desc.html(html);
+
+                break;
+              }
+            }
+            /*target.style.backgroundImage = `url('img/mockup_info${page5curImgIdx}.png')`*/
+            const scrollNum = page4curImgIdx + 1;
+            $(target).find(".scroll-num-top").text(num_to_str(page4curImgIdx + 1));
+            imgF.src = "./img/solution_3d" + page4curImgIdx + ".jpg";
+            imgS.src = "./img/solution_sub_3d" + page4curImgIdx + ".jpg";
+
+          } else if (index == 5) {
+            var imgF = document.querySelector(".imgF1");
+            var imgS = document.querySelector(".imgS1");
+            /*if(isMoveDown && !isMoveUp){
+              var target = $(".home-section").eq(index + 1).get(0);
+              target.style.backgroundImage = "url('img/mockup_info2.png')"
+            
+            }*/
+
+            if (delta < 0) {
+              if (page5curImgIdx >= 2) {
+                // 화면 이동 0.8초(800)
+                $("html,body").stop().animate({
+                  scrollTop: moveTop + 'px'
+                }, {
+                  duration: 800,
+                  complete: function () {}
+                });
+              }
+              if (page5curImgIdx < 2) {
+                page5curImgIdx++;
+              }
+            } else {
+              if (page5curImgIdx == 0) {
+                // 화면 이동 0.8초(800)
+                $("html,body").stop().animate({
+                  scrollTop: moveTop + 'px'
+                }, {
+                  duration: 800,
+                  complete: function () {}
+                });
+              }
+              if (page5curImgIdx > 0) {
+                page5curImgIdx--;
+              }
+            }
+            var target = $(".home-section").eq(index).get(0);
+            const solution_desc = $(target).find(".solution-desc");
+            let html = '';
+            switch (page5curImgIdx) {
+              case 0: {
+                html += '<p class="solution-tit">';
+                html += ' Genie'
+                html += '</p>'
+                html += '<div class="solution-tit-sub">'
+                html += ' 유학지원 프로그램 제공 시스템'
+                html += '</div>'
+
+                solution_desc.html(html);
+
+                break;
+              }
+              case 1: {
+                html += '<p class="solution-tit">';
+                html += ' TeuniTeuni'
+                html += '</p>'
+                html += '<div class="solution-tit-sub">'
+                html += ' 어린이 놀이체육 프로그램 제공 시스템'
+                html += '</div>'
+
+                solution_desc.html(html);
+
+                break;
+              }
+              case 2: {
+                html += '<p class="solution-tit">';
+                html += ' 담양 스마트팜'
+                html += '</p>'
+                html += '<div class="solution-tit-sub">'
+                html += '   ICT를 통한 원격 온실 모니터링 및 농장 유지관리 시스템'
+                html += '</div>'
+
+                solution_desc.html(html);
+
+                break;
+              }
+            }
+
+
+            $(target).find(".scroll-num-top").text(num_to_str(page5curImgIdx + 1));
+            target.style.backgroundImage = `url('img/mockup_info${page5curImgIdx}.png')`
+            imgF.src = "./img/sol_info" + page5curImgIdx + ".png";
+            imgS.src = "./img/sol_sub_info" + page5curImgIdx + ".png";
+
+          } else if (index == 6) {
+            var imgF = document.querySelector(".imgF2");
+            var imgS = document.querySelector(".imgS2");
+            if (delta < 0) {
+              if (page6curImgIdx >= 1) {
+                // 화면 이동 0.8초(800)
+                $("html,body").stop().animate({
+                  scrollTop: moveTop + 'px'
+                }, {
+                  duration: 800,
+                  complete: function () {}
+                });
+              }
+              if (page6curImgIdx < 1) {
+                page6curImgIdx++;
+              }
+            } else {
+              if (page6curImgIdx == 0) {
+                // 화면 이동 0.8초(800)
+                $("html,body").stop().animate({
+                  scrollTop: moveTop + 'px'
+                }, {
+                  duration: 800,
+                  complete: function () {}
+                });
+              }
+              if (page6curImgIdx > 0) {
+                page6curImgIdx--;
+              }
+            }
+
+            var target = $(".home-section").eq(index).get(0);
+
+            const solution_desc = $(target).find(".solution-desc");
+            let html = '';
+            switch (page6curImgIdx) {
+              case 0: {
+                html += '<p class="solution-tit">';
+                html += ' 수유시장'
+                html += '</p>'
+                html += '<div class="solution-tit-sub">'
+                html += '   <p>실사기반 전통시장 3D를 통한 정보제공 및</p>'
+                html += '   <p>상품판매 시스템</p>'
+                html += '</div>'
+
+                solution_desc.html(html);
+
+                break;
+              }
+              case 1: {
+                html += '<p class="solution-tit">';
+                html += ' 미니방가'
+                html += '</p>'
+                html += '<div class="solution-tit-sub">'
+                html += '   <p>실사기반 3D 공간정보를 활용한</p>'
+                html += '   <p>숙박예약 시스템</p>'
+                html += '</div>'
+
+                solution_desc.html(html);
+
+                break;
+              }
+            }
+
+            $(target).find(".scroll-num-top").text(num_to_str(page6curImgIdx + 1));
+            var corrected_index = page6curImgIdx >= 2 ? 1 : page6curImgIdx;
+            target.style.backgroundImage = `url('./img/mockup_co${corrected_index}.png')`
+            imgF.src = "./img/sol_co" + page6curImgIdx + ".png";
+            imgS.src = "./img/sol_sub_co" + page6curImgIdx + ".png";
+          } else {
+            // 화면 이동 0.8초(800)
+            $("html,body").stop().animate({
+              scrollTop: moveTop + 'px'
+            }, {
+              duration: 800,
+              complete: function () {}
+            });
+          }
+
+
+
+          // var sValule; 
+          // document.addEventListener('scroll', function(){
+          //   sValue  = document.documentElement.scrollTop /100 ;
+          //   var imgValue = Math.floor(sValue % 3);
+          //   console.log(imgValue);
+
+          //   var bl = document.querySelector(".home-section-bg");
+          //   var imgF = document.querySelector(".imgF");
+          //   var imgS = document.querySelector(".imgS");
+
+
+          //   //console.dir(bl);
+          //   imgF.src = "./img/solution_3d"+imgValue+".jpg";
+          //   imgS.src = "./img/solution_sub_3d"+imgValue+".jpg";
+          // });
+
+        });
+      });
+    }
+  </script>
+
+
+<script>
+  
+  </script>
+  <title>infoin</title>
+</head>
+
+<body>
+  <div id="wrap">
+    <header id="header">
+      <div class="header-main">
+        <div class="header-inner">
+          <h1 class="main-logo">
+            <a href="#none" title="main-home">
+              <img src="img/logo.svg" alt="infoin-logo img" />
+            </a>
+          </h1>
+          <nav class="menu-toggle">
+            <span class="nav-line"></span>
+            <span class="nav-line"></span>
+          </nav>
+        </div>
+      </div>
+      <div class="menu-container">
+        <div class="menu-content">
+          <div class="menu-left">
+            <ul>
+              <li class="menu-item">
+                <a href="#none" title="core">
+                  core
+                </a>
+                <span class="circle"></span>
+              </li>
+              <li class="menu-item">
+                <a href="#none" title="about">
+                  about
+                </a>
+                <span class="circle"></span>
+              </li>
+              <li class="menu-item">
+                <a href="#none" title="solution">
+                  solution
+                </a>
+                <span class="circle"></span>
+              </li>
+              <li class="menu-item">
+                <a href="#none" title="contact">
+                  contact
+                </a>
+                <span class="circle"></span>
+              </li>
+            </ul>
+            <div class="menu-btn">
+              <p>
+                <a href="http://in4in.com/3d.html" title="3D.R 바로가기">
+                  3D.R 바로가기
+                </a>
+              </p>
+              <p>
+                <a href="#none" title="DRONVOLAR">
+                  DRONVOLAR
+                </a>
+              </p>
+            </div>
+          </div>
+          <div class="menu-right">
+            <div class="menu-logo">
+              <div>
+                <img src="img/infoin_logo.png" alt="logo" />
+              </div>
+            </div>
+            <div class="menu-com-info">
+              <dl class="effect hover">
+                <dt>
+                  Address
+                </dt>
+                <dd>
+                  <a href="https://map.naver.com/v5/search/%EC%9D%B8%ED%8F%AC%EC%9D%B8/place/37548634?c=14140468.3350683,4508522.0193795,15,0,0,0,dh&placePath=%3Fentry%253Dbmp"
+                    title="address">
+                    서울 강남구 테헤란로 4길35<br />
+                    프리스티지투 4층
+                  </a>
+                </dd>
+              </dl>
+              <div class="menu-info">
+                <dl class="effect hover">
+                  <dt>
+                    Tel
+                  </dt>
+                  <dd>
+                    02-599-1601
+                  </dd>
+                </dl>
+                <dl class="effect hover">
+                  <dt>
+                    Fax
+                  </dt>
+                  <dd>
+                    02-599-1602
+                  </dd>
+                </dl>
+              </div>
+              <dl class="effect hover">
+                <dt>Mail</dt>
+                <dd>
+                  <a href="https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=mailto&to=szipz@theinfoin.com"
+                    title="mail">
+                    szipz@theinfoin.com
+                  </a>
+                </dd>
+              </dl>
+              <span class="data">
+                개인정보처리방침
+              </span>
+              <p class="copy">
+                Copyright © INFOIN CO.,Ltd. All Rights Reserved.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main id="main">
+      <ul class="quick-nav">
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+      <div class="home-main">
+        <!-- 1번째 영역 -->
+        <section class="home-section">
+          <div class="video-frame">
+            <video class="myvideo"  src="video/info.mp4" muted autoplay></video>
+          </div>
+          <div class="home-bg"></div>
+          <div class="project-info">
+            <h3 class="project-tit">
+              <a href="#" title="integrated metaverse">integrated metaverse</a>
+            </h3>
+            <p class="project-desc">
+              우리는 디지털 속에 진짜 세상을 만들어가고 있습니다<br />
+              그 세계에 참여하는 모두가 새롭게 소통하고 경험하도록 하여<br />
+              누구에게나 이로운 가치를 창출해 나갈 것입니다
+            </p>
+            <p class="project-desc-mob">
+              우리는 디지털 속에 진짜 세상을 만들어가고 있습니다<br />
+              그 세계에 참여하는 모두가 새롭게 소통하고 경험하도록 하여 누구에게나 이로운 가치를 창출해 나갈 것입니다
+            </p>
+          </div>
+        </section>
+        <!-- 2번째 영역 -->
+        <section class="home-section">
+          <div class="video-frame">
+            <video class="myvideo" src="video/3d.mp4" muted></video>
+          </div>
+          <div class="home-bg"></div>
+          <div class="project-info">
+            <h3 class="project-tit">
+              <a href="#none" title="integrated metaverse">INFOPLATFORM</a>
+            </h3>
+            <p class="project-desc">
+              지금 이 시점의 트렌드를 끊임없이 연구하고 공감하여<br />
+              당신에게 딱 맞는 INFOPLATFORM을 제공합니다
+            </p>
+            <p class="project-desc-mob">
+              지금 이 시점의 트렌드를 끊임없이 연구하고 공감하여<br/>
+              당신에게 딱 맞는 INFOPLATFORM을 제공합니다
+            </p>
+          </div>
+        </section>
+        <!-- 3번째 영역 -->
+        <section class="home-section">
+          <div class="video-frame">
+            <video class="myvideo" src="video/3d.mp4" muted></video>
+          </div>
+          <div class="home-bg"></div>
+          <div class="project-info">
+            <h3 class="project-tit">
+              <a href="#" title="integrated metaverse">3D.R</a>
+            </h3>
+            <p class="project-desc">
+              우리의 3D는 그 ' Real' 자체입니다<br />
+              현장에 있는 것처럼 생생한 에 더해진 다양한 콘텐츠들은<br />
+              당신에게 더 특별한 일상을 제공합니다
+            </p>
+            <p class="project-desc-mob">
+              우리의 3D는 그 ' Real' 자체입니다<br />
+              현장에 있는 것처럼 생생한 에 더해진 다양한 콘텐츠들은<br />
+              당신에게 더 특별한 일상을 제공합니다
+            </p>
+          </div>
+        </section>
+        <!-- 4번째 영역 -->
+        <section class="home-section sentence-area active">
+          <div class="company-info">
+            <div class="company-desc-left">
+              <div class="company-text">
+                <!--<p class="company-tit">
+                  WE WANT TO BE<br/>
+                  YOUR FRIEND
+                </p>-->
+                <div class="com-list">
+                  <ul class="company-tit">
+                    <li>
+                      <a class="active">
+                        <span class="txt">WE WANT TO BE</span>
+                        <span class="line"></span>
+                      </a>
+                    </li>
+                    <li>
+                      <a>
+                        <span class="txt">YOUR FRIEND</span>
+                        <span class="line"></span>
+                      </a>
+                    </li>
+                  </ul>
+                  <p class="company-desc">
+                    우리는 당신을 위한 정보통신 기술을 개발하겠다는 일념으로 모였습니다.<br />
+                    우리의 목표는 소통을 통해 당신의 개성을 파악하고, 능력이 돋보일 수 있도록<br />
+                    우리가 가진 모든 것을 당신에게 꼭 맞게 담아주는 것입니다.<br />
+                    우리는 당신의 성공을 끝까지 함께하는 친구가 되고 싶습니다.
+                  </p>
+                </div>
+                <p class="company-btn">
+                  <a href="http://in4in.com/3dr_brochure_v4.pdf" title="회사소개서">회사소개서</a>
+                </p>
+              </div>
+            </div>
+            <div class="company-desc-right">
+              <div class="sentence">
+                <div class="column">
+                  <p></p>
+                  <p>TECH</p>
+                  <p></p>
+                  <p>CUST</p>
+                  <p></p>
+                  <p></p>
+                </div>
+                <div class="main-transition">
+                  <p class="letter">I</p>
+                  <p class="letter">N</p>
+                  <p class="letter">F</p>
+                  <p class="letter">O</p>
+                  <p class="letter">I</p>
+                  <p class="letter">N</p>
+                </div>
+                <div class="column">
+                  <p>NFORMATION</p>
+                  <p>OLOGY</p>
+                  <p>OR</p>
+                  <p>MER</p>
+                  <p>NTEGRATION</p>
+                  <p>EEDS</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- 5번째 영역 -->
+        <section class="home-section home-section-bg">
+          <div class="solution">
+            <div class="keyword-box">
+              <div class="keyword">
+                <p class="keyword-tit">3D.R</p>
+                <div class="words-box">
+                  <ul class="words">
+                    <li>3D 데이터 최적화</li>
+                    <li>드론 촬영</li>
+                    <li>3D&loT 융복합</li>
+                    <li>VR/AR 콘텐츠</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="keyword-info">
+              3D.R는 드론 촬영을 통해 추출한 데이터가 보여주는 모든 것을 고품질·저용량의 실사로 3D 제작하여<br />
+              인터넷이 가능한 모든 환경에서 공간 정보 체험이 가능한 새로운 디지털 트윈 기술입니다.
+            </div>
+          </div>
+          <div class="solution-project">
+            <div class="scroll-move">
+              <div class="scroll-num scroll-num-top">01</div>
+              <div class="scroll-bar">
+                <div>
+                  <img src="img/mouse.png">
+                </div>
+              </div>
+              <div class="scroll-num scroll-num-bottom">03</div>
+            </div>
+            <div class="solution-imgArea">
+              <div class="solution-img main-img0">
+                <img class="imgF" src="img/solution_3d0.jpg" alt="solution_3d0 img" />
+                <div class="solution-info">
+                  <div class="solution-text">
+                    <div class="solution-desc">
+                      <p class="solution-tit">
+                        수원 컨벤션
+                      </p>
+                      <div class="solution-tit-sub">
+                        <p>실사 기반 3차원 공간정보 콘텐츠</p>
+                        <p>실시간 데이터 시각화 시스템 구축</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="illust-img">
+            <img src="img/people.png" alt="illust img" />
+          </div>
+          <!--
+          <div class="solution-info">
+            <div class="solution-text">
+              <div class="solution-desc">
+                <p class="solution-tit">
+                  수원 컨벤션
+                </p>
+                <div class="solution-tit-sub">
+                  <p>실사 기반 3차원 공간정보 콘텐츠</p>
+                  <p>실시간 데이터 시각화 시스템 구축</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          -->
+          <div class="solution_sub-imgArea">
+            <div class="solution_sub-img sub-img0">
+              <img class="imgS" src="img/solution_sub_3d0.png" alt="/solution_sub_3d0" />
+            </div>
+          </div>
+        </section>
+        <!-- 6번째 영역 -->
+        <section class="home-section home-info-mockup">
+          <div class="solution">
+            <div class="keyword">
+              <p class="keyword-tit">INFOPLATFORM</p>
+              <div class="words-box">
+                <ul class="words">
+                  <li>Platform</li>
+                  <li>Big Data</li>
+                  <li>Process</li>
+                  <li>Development lot</li>
+                </ul>
+              </div>
+            </div>
+            <div class="keyword-info">
+              분석, 설계, 개발, 테스트로 완성된 맞춤형 어플리케이션 서비스와 컴포넌트를 제공합니다. <br />
+              서비스 특성에 따라 디바이스와 IoT센서를 연동해 실시간으로 환경을 제어하는 IoT 기술 적용이 가능합니다.
+            </div>
+          </div>
+          <div class="solution-project">
+            <div class="scroll-move">
+              <div class="scroll-num scroll-num-top">01</div>
+              <div class="scroll-bar">
+                <div>
+                  <img src="img/mouse.png">
+                </div>
+              </div>
+              <div class="scroll-num scroll-num-bottom">03</div>
+            </div>
+            <div class="solution-imgArea">
+              <div class="solution-img main-img0">
+                <img class="imgF1" src="img/sol_info0.png" alt="solution_3d0 img" />
+                <div class="solution-info">
+                  <div class="solution-text">
+                    <div class="solution-desc">
+                      <p class="solution-tit">
+                        Genie
+                      </p>
+                      <div class="solution-tit-sub">
+                        유학지원 프로그램 제공 시스템
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--
+          <div class="solution-info">
+            <div class="solution-text">
+              <div class="solution-desc">
+                <p class="solution-tit">
+                  Genie
+                </p>
+                <div class="solution-tit-sub">
+                  유학지원 프로그램 제공 시스템
+                </div>
+              </div>
+            </div>
+          </div>
+          -->
+          <div class="solution_sub-imgArea">
+            <div class="solution_sub-img sub-img0">
+              <img class="imgS1" src="img/sol_sub_info0.png" alt="/solution_sub_3d0" />
+            </div>
+          </div>
+        </section>
+        <!-- 7번째 영역 -->
+        <section class="home-section home-co-mockup">
+          <div class="solution">
+            <div class="keyword">
+              <p class="keyword-tit">Commerce</p>
+              <div class="words-box">
+                <ul class="words">
+                  <li>Live-Commerce</li>
+                  <li>Reservation</li>
+                  <li>결제시스템 분석 및 보고</li>
+                  <li>검색관리</li>
+                </ul>
+              </div>
+            </div>
+            <div class="keyword-info">
+              고객별, 서비스별 고유 문화와 제도에 맞게 맞춤 설정하여 품목관리, 판매관리, 트래킹 추적 보고서 등<br />
+              효율적인 커머스 관리가 가능한 환경을 제공합니다.
+            </div>
+          </div>
+          <div class="solution-project">
+            <div class="scroll-move">
+              <div class="scroll-num scroll-num-top">01</div>
+              <div class="scroll-bar">
+                <div>
+                  <img src="img/mouse.png">
+                </div>
+              </div>
+              <div class="scroll-num scroll-num-bottom">03</div>
+            </div>
+            <div class="solution-imgArea">
+              <div class="solution-img main-img0">
+                <img class="imgF2" src="img/sol_co0.jpg" alt="solution_3d0 img" />
+                <div class="solution-info">
+                  <div class="solution-text">
+                    <div class="solution-desc">
+                      <p class="solution-tit">
+                        수유시장
+                      </p>
+                      <div class="solution-tit-sub">
+                        <p>실사기반 전통시장 3D를 통한 정보제공 및</p>
+                        <p>상품판매 시스템</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--
+          <div class="solution-info">
+            <div class="solution-text">
+              <div class="solution-desc">
+                <p class="solution-tit">
+                  수유시장
+                </p>
+                <div class="solution-tit-sub">
+                  <p>실사기반 전통시장 3D를 통한 정보제공 및</p>
+                  <p>상품판매 시스템</p>
+                </div>
+              </div>
+            </div>
+          </div>
+         -->
+          <div class="solution_sub-imgArea">
+            <div class="solution_sub-img sub-img0">
+              <img class="imgS2" src="img/sol_sub_co0.png" alt="/solution_sub_3d0" />
+            </div>
+          </div>
+        </section>
+        <!-- 8번째 영역 -->
+        <section class="home-section cont-section">
+          <div class="cont-main">
+            <div class="cont-info">
+              <h3 class="cont-tit">contact</h3>
+              <div class="cont-com-info">
+                <dl class="effect hover">
+                  <dt>
+                    Address
+                  </dt>
+                  <dd>
+                    <a href="https://map.naver.com/v5/search/%EC%9D%B8%ED%8F%AC%EC%9D%B8/place/37548634?c=14140468.3350683,4508522.0193795,15,0,0,0,dh&placePath=%3Fentry%253Dbmp"
+                      title="address">
+                      서울 강남구 테헤란로 4길35<br />
+                      프리스티지투 4층
+                    </a>
+                  </dd>
+                </dl>
+                
+                <dl class="effect hover">
+                  <dt>
+                    Tel
+                  </dt>
+                  <dd>
+                    02-599-1601
+                  </dd>
+                </dl>
+                <dl class="effect hover">
+                  <dt>
+                    Fax
+                  </dt>
+                  <dd>
+                    02-599-1602
+                  </dd>
+                </dl>
+           
+                <dl class="effect hover">
+                  <dt>Mail</dt>
+                  <dd>
+                    <a href="https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=mailto&to=szipz@theinfoin.com"
+                      title="mail">
+                      szipz@theinfoin.com
+                    </a>
+                  </dd>
+                </dl>
+              </div>
+            </div>
+            <div class="cont-user">
+              <div class="contact cont-inq">
+                <div class="pro-tit">
+                  <div class="call">
+                    <img src="img/call_left.png" alt="call img">
+                  </div>
+                  <p class="inq-text">프로젝트 문의</p>
+                  <!-- <p class="circle-bg0"></p> -->
+                </div>
+                <!--
+                <div class="cont-img">
+                  <p class="circle-bg0"></p>
+                </div>
+                --> 
+              </div>
+              <div class="contact apply_inq">
+                <div class="pro-tit">
+                  <div class="call">
+                    <img src="img/call_right.png" alt="call img">
+                  </div>
+                  <p class="inq-text">입사지원 문의</p>
+                  <!-- <p class="circle-bg1"></p> -->
+
+                </div>
+                <!--
+                <div class="cont-img">
+                  <p class="circle-bg1"></p>
+                </div>
+                -->
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- 9번째 영역 -->
+        <section class="cont-project cont hide">
+          <div class="cont-top">
+            <div class="cont-inner">
+              <div class="cont-inner-tit">
+                Be an INFOIN'S <span>PEOPLE</span>
+              </div>
+              <div class="cont-com-info">
+                <dl class="effect hover">
+                  <dt>
+                    Address
+                  </dt>
+                  <dd>
+                    <a href="https://map.naver.com/v5/search/%EC%9D%B8%ED%8F%AC%EC%9D%B8/place/37548634?c=14140468.3350683,4508522.0193795,15,0,0,0,dh&placePath=%3Fentry%253Dbmp"
+                      title="address">
+                      서울 강남구 테헤란로 4길35<br />
+                      프리스티지투 4층
+                    </a>
+                  </dd>
+                </dl>
+                
+                <dl class="effect hover">
+                  <dt>
+                    Tel
+                  </dt>
+                  <dd>
+                    02-599-1601
+                  </dd>
+                </dl>
+                <dl class="effect hover">
+                  <dt>
+                    Fax
+                  </dt>
+                  <dd>
+                    02-599-1602
+                  </dd>
+                </dl>
+           
+                <dl class="effect hover">
+                  <dt>Mail</dt>
+                  <dd>
+                    <a href="https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=mailto&to=szipz@theinfoin.com"
+                      title="mail">
+                      szipz@theinfoin.com
+                    </a>
+                  </dd>
+                </dl>
+              </div>
+            </div>
+            <div class="illustImg illust0">
+              <img src="img/illust0.png" alt="일러스트" />
+            </div>
+          </div>
+          <div class="cont-bottom">
+            <div class="illustImg illust-bg">
+              <img src="img/illust_bg.png" alt="일러스트" />
+            </div>
+            <div class="illustImg illust1">
+              <img src="img/illust1.png" alt="일러스트" />
+            </div>
+            <div class="illustImg illust2">
+              <img src="img/illust2.png" alt="일러스트" />
+            </div>
+            <div class="cont-formArea">
+              <div class="form-text-mob">
+                <h3 class="form-tit">
+                  contact project
+                </h3>
+                <p class="form-desc">
+                  사람을 위한 기술을 만들어 나가는 인포인은 여러분의 생각을 귀담아 듣고<br />
+                  이해하여 필요한 서비스와 정확한 솔루션을 제공합니다 .
+                </p>
+              </div>
+              <form id="cont-form" action="#none" methid="post">
+                <fieldset>
+                  <legend>프로젝트문의</legend>
+                  <div class="form-inner" id="contactDiv">
+                    <div class="form-text">
+                      <h3 class="form-tit">
+                        contact project
+                      </h3>
+                      <p class="form-desc">
+                        사람을 위한 기술을 만들어 나가는 인포인은 여러분의 생각을 귀담아 듣고<br />
+                        이해하여 필요한 서비스와 정확한 솔루션을 제공합니다 .
+                      </p>
+                    </div>
+                    <div class="user-info">
+                      <div class="info">
+                        <div class="info-person">
+                          <div class="col-01">
+                            <span class="size">회사명</span>은
+                          </div>
+                          <input type="text" name="com_name" /><span class="alert-img"></span>
+                          <div class="col-02"> &nbsp;이고,</div>
+                        </div>
+                        <p class="alert-text alert-name">회사명을 25자 이내로 작성해주세요.</p>
+                        <div class="info-person">
+                          <div class="col-01"><span class="size">연락처</span>는 </div>
+                          <input type="text" name="com_tel" maxlength='13'/><span class="alert-img"></span>
+                          <div class="col-02">입니다.</div>
+                        </div>
+                        <p class="alert-text alert-tel">유효한 연락처 형식이 아닙니다.</p>
+                        <div class="info-person">
+                          <div class="col-01">
+                            <span class="size">이메일</span>은 
+                          </div>
+                          <input type="text" name="com_email" /><span class="alert-img"></span>
+                          <div class="col-02">입니다.</div>
+                        </div>
+                        <p class="alert-text alert-email">유효한 이메일 형식이 아닙니다.</p>
+                      </div>
+                      <!--mobile--->
+                      <div class="info-mob">
+                        <p>
+                          <label for="com-name">회사명</label>
+                         <input type="text" name="com_name_m" />
+                        </p>
+                        <p>
+                          <label for="com-tel">연락처</label>
+                          <input type="text" name="com_tel_m" maxlength='13'/>
+                        </p>
+                        <p>
+                          <label for="com-email">이메일</label>
+                          <input type="text" name="com_email_m" />
+                        </p>
+                      </div>
+                      <!---->
+                      <div class="chkBox">
+                        <p>문의할 프로젝트를 선택하세요.</p>
+                        <!--<input type="checkbox" name="com_inquiry" value="2"><label for="3D 콘텐츠">3D 콘텐츠</label>
+                        <input type="checkbox" name="com_inquiry" value="4"><label for="메타버스 제작">메타버스 제작</label>
+                        <input type="checkbox" name="com_inquiry" value="8"><label for="소프트웨어 제작">소프트웨어 제작</label>
+                        <input type="checkbox" name="com_inquiry" value="16"><label for="드론 촬영">드론 촬영</label>
+                        <input type="checkbox" name="com_inquiry" value="32"><label for="기타">기타</label>-->
+                        <div class="chk_menu">
+                          <input type="checkbox" name="com_inquiry" value="2"><label for="3D 콘텐츠">3D 콘텐츠</label>
+                        </div>
+                        <div class="chk_menu">
+                          <input type="checkbox" name="com_inquiry" value="4"><label for="메타버스 제작">메타버스 제작</label>
+                        </div>
+                        <div class="chk_menu">
+                          <input type="checkbox" name="com_inquiry" value="8"><label for="소프트웨어 제작">소프트웨어 제작</label>
+                        </div>
+                        <div class="chk_menu">
+                          <input type="checkbox" name="com_inquiry" value="16"><label for="드론 촬영">드론 촬영</label>
+                        </div>
+                        <div class="chk_menu">
+                          <input type="checkbox" name="com_inquiry" value="32"><label for="기타">기타</label>
+                        </div>
+                      </div>
+                      <div class="chkBox-mob">
+                        <p>문의할 프로젝트를 선택하세요.</p>
+                        <div class="chk_menu">
+                          <input type="checkbox" name="com_inquiry_m" value="2"><label for="3D 콘텐츠">3D 콘텐츠</label>
+                        </div>
+                        <div class="chk_menu">
+                          <input type="checkbox" name="com_inquiry_m" value="4"><label for="메타버스 제작">메타버스 제작</label>
+                        </div>
+                        <div class="chk_menu">
+                          <input type="checkbox" name="com_inquiry_m" value="8"><label for="소프트웨어 제작">소프트웨어 제작</label>
+                        </div>
+                        <div class="chk_menu">
+                          <input type="checkbox" name="com_inquiry_m" value="16"><label for="드론 촬영">드론 촬영</label>
+                        </div>
+                        <div class="chk_menu">
+                          <input type="checkbox" name="com_inquiry_m" value="32"><label for="기타">기타</label>
+                        </div>
+                      </div>
+                      <div class="textArea">
+                        <p>의뢰내용은 아래와 같아요.</p>
+                        <textarea id="textarea0" name="com_content"></textarea>
+                      </div>
+                      <div class="fileArea">
+                        <p class="fileText">검토할 파일을 첨부할게요</p>
+                        <div class="file">
+                          <label for="contactFile">
+                            <span class="file-img">
+                              <img src="img/file.png" alt="file img" />
+                            </span>
+                          </label>
+                          <input type="file" id="contactFile" name="uploaded_file" accept=".pdf,.hwp,.zip,.jpg,.jpeg,.ppt,.xls,.doc,.hwp">
+                          
+                        </div>
+                      </div>
+                      <div class="agreement agreement2">
+                        <input type="checkbox" name="agreed" /><label for="agreement">&nbsp;<span class="bold">개인정보
+                        처리방침</span>에 동의합니다.<span class="red">&nbsp;(필수)</span></label>
+                      </div>
+                      <div class="btnArea">
+                        <input id="button1" class="cont-button" type="button" value="뒤로가기" title="뒤로가기" />
+                        <input id="button2" class="cont-button" type="submit" value="의뢰하기" title="의뢰하기" />
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+              </form>
+            </div>
+          </div>
+        </section>
+        <!-- 10번째 영역 -->
+        <section class="cont-project apply hide">
+          <div class="cont-top">
+            <div class="cont-inner hide">
+              <div class="cont-inner-tit">
+                Be an INFOIN'S <span>PEOPLE</span>
+              </div>
+              <div class="cont-com-info">
+                <dl>
+                  <dt>Address</dt>
+                  <dd class="rotate">
+                    <a data-link="서울 강남구 테헤란로 4길35
+                    프리스티지투 4층">서울 강남구 테헤란로 4길35<br/>
+                    프리스티지투 4층</a>
+                  </dd>
+                </dl>
+                <dl>
+                  <dt>Tel</dt>
+                  <dd class="rotate">
+                    <a data-link="02-599-1601">02-599-1601</a>
+                  </dd>
+                </dl>
+                <dl>
+                  <dt>Fax</dt>
+                  <dd class="rotate">
+                    <a data-link="02-599-1602">02-599-1602</a>
+                  </dd>
+                </dl>
+                <dl>
+                  <dt>Mail</dt>
+                  <dd class="rotate">
+                    <a data-link="szipz@theinfoin.com">szipz@theinfoin.com</a>
+                  </dd>
+                </dl>
+              </div>
+            </div>
+            <div class="apply-content">
+              <div class="apply-text">
+                <p class="apply-tit">contact crew</p>
+                <p class="apply-info">
+                  인포인 입사지원을 환영합니다.<br/>
+                  인포인은 오늘보다 더 나은 내일을 위해 함께할 당신을 기다리고 있습니다.
+                </p>
+              </div>
+              <div class="illustImg illust3">                      
+                <img src="img/illust3.png" alt="일러스트"/>                      
+              </div>
+              <p class="motion">
+                <img src="img/triangle.png" alt="triangle 이미지"/>
+              </p>
+              <!--mobile-->
+              <div class="form-container-mob">
+                <form id="apply_form" action="#none" method="post">
+                  <fidelset>
+                    <legend>입사지원</legend>
+                    <div class="apply-form">
+                      <div class="survey">
+                        <div class="survey-title">
+                          <span class="num">01</span>
+                          <span class="question">지원 분야를 선택해 주세요.</span>
+                        </div>
+                        <div class="survey_item">
+                          <div class="survey_item_chk">
+                            <div class="chk_menu">
+                              <input type="checkbox" name="inquiry_m" value="2"><label for="item1">경영/전략 기획자</label>
+                            </div>
+                            <div class="chk_menu">
+                              <input type="checkbox" name="inquiry_m" value="8"><label for="item3">UI/UX designer</label>
+                             </div>
+                            <div class="chk_menu">
+                              <input type="checkbox" name="inquiry_m" value="16"><label for="item4">Content - Designer</label>
+                            </div>
+                            <div class="chk_menu">
+                              <input type="checkbox" name="inquiry_m" value="64"><label for="item6">Back - end 개발자</label>
+                            </div>
+                            <div class="chk_menu">
+                              <input type="checkbox" name="inquiry_m" value="32"><label for="item5">Publisher</label>
+                            </div>
+                            <div class="chk_menu">
+                              <input type="checkbox" name="inquiry_m" value="128"><label for="item7">Content기획자</label>
+                            </div>
+                            <div class="chk_menu">
+                              <input type="checkbox" name="inquiry_m" value="512"><label for="item9">Web - Designer</label>
+                            </div>
+                            <div class="chk_menu">
+                              <!--
+                              <input type="checkbox" name="inquiry" value="1024"><label for="item10">3D modeling designer</label>
+                              -->
+                              <input type="checkbox" name="inquiry_m" value="1024"><label for="item10">3D modeling</label>
+                            </div>
+                            <div class="chk_menu">
+                              <input type="checkbox" name="inquiry_m" value="4096"><label for="item12">Front - end 개발자</label>
+                            </div>
+                            <div class="chk_menu">
+                              <input type="checkbox" name="inquiry_m" value="2048"><label for="item11">정보 보안</label>
+                            </div>
+                          </div>
+                         
+                          
+                        
+                        </div>
+                      </div>
+  
+                    </div>
+                    <div class="survey">
+                      <div class="survey-title">
+                        <span class="num">02</span>
+                        <span class="question">기본 정보를 입력해 주세요.</span>
+                      </div>
+                      <!--<span class="alert-text">성명을 25자 이내로 작성해주세요.</span>-->
+                      <div class="survey_item survey_item1">
+  
+                        <input id="file0" class="infoP" type="text" placeholder="이름을 입력해주세요" name="name_m" disabled/>
+                        <span
+                          class="alert hide"></span>
+  
+                        <input class="infoP" type="text" placeholder="연락처" name="contact_m" maxlength='13' disabled/>
+                        <span class="alert alertR hide"></span>
+  
+                        <!--<span class="alert alert0"></span>-->
+                      </div>
+                      <div class="survey_item survey_item2">
+                        <input class="infoP" type="text" placeholder="이메일" name="email_m" disabled/>
+                        <span class="alert hide"></span>
+  
+                        <!--<span class="alert "></span>-->
+                        <input class="infoP" type="text" placeholder="출근 가능일" name="commuteDay_m" maxlength="10" disabled/>
+                        <span class="alert alertR hide"></span>
+  
+                        <!--<span class="alert alert0"></span>-->
+  
+                      </div>
+                    </div>
+                    <div class="survey">
+                      <!--<span class="num">03</span>
+                      <span class="question">직무와 관련된 서류를 첨부해 주세요.</span>
+                      <p class="file_ex">첨부파일(PDF,ZIP,JPG,PPT,XLS,DOC,HWP / 최대 10MB)</p>
+                      <div class="survey_item">             
+                        <input class="infoF" type="file" placeholder="이력서" name="resume"/>
+                        <input type="file" placeholder="자기소개서" name="selfIntro"/>
+                      </div>
+                      <div class="survey_item">
+                        <input type="file" placeholder="포트폴리오" name="portfolio"/>
+                        <input type="file" placeholder="사이트 URL" name="url"/>
+                      </div>-->
+                      <div class="survey-title">
+                        <span class="num">03</span>
+                        <span class="question">직무와 관련된 서류를 첨부해 주세요.</span>
+                        <p class="file_ex">첨부파일(PDF,ZIP,JPG,PPT,XLS,DOC,HWP / 최대 10MB)</p>
+                      </div>
+                      
+                      <div class="survey_item">
+                          <div class="file-user">
+                            <input id="mob-file0" type="file" name="resume"/>
+                            <label for="mob-file0">
+                              이력서
+                              <span class="file-img apply-file">
+                                <img src="img/file.png" alt="file img"/>
+                              </span>
+                            </label>
+                            <input id="mob-file1" type="file" placeholder="자기소개서" name="selfIntro"/>
+                            <label for="mob-file1">
+                              자기소개서
+                              <span class="file-img apply-file1">
+                                <img src="img/file.png" alt="file img"/>
+                              </span>
+                            </label>
+                          </div>
+                      </div>
+                      <div class="survey_item">
+                        <div class="file-user">
+                          <input id="mob-file2" type="file" placeholder="포트폴리오" name="portfolio"/>
+                          <label for="mob-file2">
+                            포트폴리오
+                            <span class="file-img">
+                              <img src="img/file.png" alt="file img"/>
+                            </span>
+                          </label>
+                      
+                          <input id="mob-file3" type="file" placeholder="사이트 URL" name="url"/>
+                          <label for="mob-file3">
+                            사이트 URL
+                            <span class="file-img apply-file1">
+                              <img src="img/file.png" alt="file img"/>
+                            </span>
+                          </label>
+                        </div>
+                      </div>
+                    </div> 
+                    <div class="survey">
+                      <div class="survey-title">
+                        <span class="num">04</span>
+                        <span class="question">추가하고 싶은 내용이 있으면 적어주세요.</span>
+                        </div>
+                      <div class="textarea"><textarea id="textarea1" name="content_m"
+                          placeholder="지원동기, 입사 후 포부 등 추가하고 싶은 내용이 있으면 적어주세요." disabled></textarea></div>
+                    </div>
+                    <div class="agreement">
+                      <input class="popup-open"  type="checkbox" name="resume_agreed_m" disabled/><label for="agreement">&nbsp;<span class="bold">개인정보
+                          처리방침</span>에 동의합니다.<span class="red">&nbsp;(필수)</span></label>
+  
+                    </div>
+                    <div class="btnArea">
+                      <input id="mob-button1" type="button" value="뒤로가기" title="뒤로가기"/>
+                      <input id="mob-button2" type="submit" value="지원하기" title="지원하기"/>
+                    </div>
+                  </fidelset>
+                </form>
+                <div class="popup-wrap" id=popup>
+                  <div class="popup-container">
+                    <div class="popup-body">
+                        
+                      <p class="modal-title">개인정보 수집 및 이용에 해한 안내</p>
+                  
+                      <div class="modal-contentBox">
+                        <p>
+                          (주)인포인(이하 회사)는 이용자의 개인정보보호를 매우 중요시하며, 『정보통신망 이용촉진 및 정보보호에 관한 법률』, 『개인정보보호법』등 개인정보보호 관련 규정을 준수하고 있습니다. 회사는 본 개인정보취급방침을 통하여 이용자에게서 제공받은 개인정보를 취급하는데 있어서 취해지는 조치들을 알려드립니다.
+                        </p>
+                        <p>
+                          회사의 대인정보취급방침은 다음과 같은 내용을 담고 있습니다.
+                        </p>
+                        <p class="modal-content">
+                          1.  개인정보의 수집 및 이용 목적<br/>
+                          2.  수집하는 개인정보의 항목 및 수집방법<br/>
+                          3.  개인정보의 제3자 제공<br/>
+                          4.  개인정보의 보유 및 이용기간<br/>
+                          5.  개인정보 파기절차와 방법<br/>
+                          6.  이용자의 권리, 의무 및 행사방법<br/>
+                          7.  개인정보의 기술적/관리적 보호 대책<br/>
+                          8.  개인정보보호 책임자 및 담당자<br/>
+                          9.  기타 부가방침<br/>
+                        </p>
+                      </div>
+                    </div>
+                    <div class="popup-footer">
+                      <p class="pop-btn colse" id="close">닫기</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!---->
+            </div>
+            
+          </div>
+          <div class="form-container">
+            <form id="apply_form" action="#none" method="post">
+              <fidelset>
+                <legend>입사지원</legend>
+                <div class="apply-form">
+                  <div class="survey">
+                    <div class="tit">
+                      <span class="num">01</span>
+                      <span class="question">지원 분야를 선택해 주세요.</span>
+                    </div>
+                    <div class="survey_item">
+                      
+                      <!-- 
+                      <div class="survey_item_chk">
+                        <input type="checkbox" name="inquiry" value="2"><label for="item1">경영/전략 기획자</label>
+                        <input type="checkbox" name="inquiry" value="4"><label for="item2">전략 마케팅</label>
+                        <input type="checkbox" name="inquiry" value="8"><label for="item3">UI/UX designer</label>
+                        <input type="checkbox" name="inquiry" value="16"><label for="item4">Content - Designer</label>
+                        <input type="checkbox" name="inquiry" value="32"><label for="item5">Publisher</label>
+                        <input type="checkbox" name="inquiry" value="64"><label for="item6">Front - end 개발자</label>
+                      </div>
+                      <div class="survey_item_chk">
+                        <input type="checkbox" name="inquiry" value="128"><label for="item7">Content  기획자</label>
+                        <input type="checkbox" name="inquiry" value="256"><label for="item8">영업 마케팅</label>
+                        <input type="checkbox" name="inquiry" value="512"><label for="item9">Web - Designer</label>
+                        <input type="checkbox" name="inquiry" value="1024"><label for="item10">3D modeling designer</label>
+                        <input type="checkbox" name="inquiry" value="2048"><label for="item11">정보 보안</label>
+                        <input type="checkbox" name="inquiry" value="4096"><label for="item12">Back - end 개발자</label>
+                      </div>
+                      -->
+                      <!-- add son -->
+                      <div class="survey_item_chk">
+                        <div class="chk_menu">
+                          <input type="checkbox" name="inquiry" value="2"><label for="item1">경영/전략 기획자</label>
+                        </div>
+                        <div class="chk_menu">
+                          <input type="checkbox" name="inquiry" value="8"><label for="item3">UI/UX designer</label>
+                         </div>
+                        <div class="chk_menu">
+                          <input type="checkbox" name="inquiry" value="16"><label for="item4">Content - Designer</label>
+                        </div>
+                        <div class="chk_menu">
+                          <input type="checkbox" name="inquiry" value="64"><label for="item6">Back - end 개발자</label>
+                        </div>
+                        <div class="chk_menu">
+                          <input type="checkbox" name="inquiry" value="32"><label for="item5">Publisher</label>
+                        </div>
+
+                        <div class="chk_menu">
+                          <input type="checkbox" name="inquiry" value="128"><label for="item7">Content기획자</label>
+                        </div>
+                        <div class="chk_menu">
+                          <input type="checkbox" name="inquiry" value="512"><label for="item9">Web - Designer</label>
+                        </div>
+                        <div class="chk_menu">
+                          <input type="checkbox" name="inquiry" value="1024"><label for="item10">3D modeling designer</label>
+                        </div>
+                        <div class="chk_menu">
+                          <input type="checkbox" name="inquiry" value="4096"><label for="item12">Front - end 개발자</label>
+                        </div>
+                        <div class="chk_menu">
+                          <input type="checkbox" name="inquiry" value="2048"><label for="item11">정보 보안</label>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+
+                </div>
+                <div class="survey">
+                  <div class="tit">
+                    <span class="num">02</span>
+                    <span class="question">기본 정보를 입력해 주세요.</span>
+                  </div>
+                  <!--<span class="alert-text">성명을 25자 이내로 작성해주세요.</span>-->
+                  <div class="survey_item">
+                    <div class="survey_name">
+                      <input id="file0" class="infoP" type="text" placeholder="성명" name="name" disabled/>
+                      <span class="alert hide"></span>
+                    </div>
+                    <div class="survey_name">
+                      <input class="infoP" type="text" placeholder="연락처" name="contact" maxlength='13' disabled/>
+                    </div>
+                    <div class="survey_name">
+                      <span class="alert alertR hide"></span>
+                    </div>
+                    <div class="survey_name">
+                      <input class="infoP" type="text" placeholder="이메일" name="email" disabled/>
+                    </div>
+                    <span class="alert hide"></span>
+
+                    <!--<span class="alert "></span>-->
+                    <div class="survey_name">
+                    <input class="infoP" type="text" placeholder="출근 가능일" name="commuteDay" maxlength="10" disabled/>
+                    </div>
+                    <span class="alert alertR hide"></span>
+
+                    <!--<span class="alert alert0"></span>-->
+                  </div>
+                </div>
+                <div class="survey">
+                  <!--<span class="num">03</span>
+                  <span class="question">직무와 관련된 서류를 첨부해 주세요.</span>
+                  <p class="file_ex">첨부파일(PDF,ZIP,JPG,PPT,XLS,DOC,HWP / 최대 10MB)</p>
+                  <div class="survey_item">             
+                    <input class="infoF" type="file" placeholder="이력서" name="resume"/>
+                    <input type="file" placeholder="자기소개서" name="selfIntro"/>
+                  </div>
+                  <div class="survey_item">
+                    <input type="file" placeholder="포트폴리오" name="portfolio"/>
+                    <input type="file" placeholder="사이트 URL" name="url"/>
+                  </div>-->
+                  <div class="tit2">
+                    <span class="num">03</span>
+                    <span class="question">직무와 관련된 서류를 첨부해 주세요.</span>
+                  </div>
+                  <p class="file_ex">첨부파일(PDF,ZIP,JPG,PPT,XLS,DOC,HWP / 최대 10MB)</p>
+                  <div class="survey_item">
+                      <div class="file-user">
+                        <input id="file_0" type="file" name="resume" disabled/>
+                        <label for="file_0">
+                          이력서
+                          <span class="file-img apply-file">
+                            <img src="img/file.png" alt="file img"/>
+                          </span>
+                        </label>
+                        <input id="file1" type="file" placeholder="자기소개서" name="selfIntro" disabled/>
+                        <label for="file1">
+                          자기소개서
+                          <span class="file-img apply-file1">
+                            <img src="img/file.png" alt="file img"/>
+                          </span>
+                        </label>
+                      </div>
+                  </div>
+                  <div class="survey_item">
+                    <div class="file-user">
+                      <input id="file2" type="file" placeholder="포트폴리오" name="portfolio" disabled/>
+                      <label for="file2">
+                        포트폴리오
+                        <span class="file-img">
+                          <img src="img/file.png" alt="file img"/>
+                        </span>
+                      </label>
+                  
+                      <input id="file3" type="file" placeholder="사이트 URL" name="url" disabled/>
+                      <label for="file3">
+                        사이트 URL
+                        <span class="file-img apply-file1">
+                          <img src="img/file.png" alt="file img"/>
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+                </div> 
+                <div class="survey">
+                  <div class="tit2">
+                    <span class="num">04</span>
+                    <span class="question">추가하고 싶은 내용이 있으면 적어주세요.</span>
+                  </div>
+                  <div class="textarea"><textarea id="textarea1" name="content"
+                      placeholder="지원동기, 입사 후 포부 등 추가하고 싶은 내용이 있으면 적어주세요." disabled></textarea></div>
+                </div>
+                <div class="agreement">
+                  <input class="popup-open"  type="checkbox" name="resume_agreed" disabled/><label for="agreement">&nbsp;<span class="bold">개인정보
+                      처리방침</span>에 동의합니다.<span class="red">&nbsp;(필수)</span></label>
+
+                </div>
+                <div class="btnArea">
+                  <input id="button3" type="button" value="뒤로가기" title="뒤로가기"/>
+                  <input id="button4" type="submit" value="지원하기" title="지원하기"/>
+                </div>
+              </fidelset>
+            </form>
+            
+            <!-- 개인정보처리방침 팝업 -->
+            <div class="popup-wrap" id=popup>
+              <div class="popup-container">
+                <div class="popup-body">
+                  <p class="modal-title">개인정보 수집 및 이용에 해한 안내</p>
+                  <div class="modal-contentBox">
+                    <p>
+                      (주)인포인(이하 회사)는 이용자의 개인정보보호를 매우 중요시하며, 『정보통신망 이용촉진 및 정보보호에 관한 법률』, 『개인정보보호법』등 개인정보보호 관련 규정을 준수하고 있습니다. 회사는 본 개인정보취급방침을 통하여 이용자에게서 제공받은 개인정보를 취급하는데 있어서 취해지는 조치들을 알려드립니다.
+                    </p>
+                    <p>
+                      회사의 대인정보취급방침은 다음과 같은 내용을 담고 있습니다.
+                    </p>
+                    <p class="modal-content">
+                      1.  개인정보의 수집 및 이용 목적<br/>
+                      2.  수집하는 개인정보의 항목 및 수집방법<br/>
+                      3.  개인정보의 제3자 제공<br/>
+                      4.  개인정보의 보유 및 이용기간<br/>
+                      5.  개인정보 파기절차와 방법<br/>
+                      6.  이용자의 권리, 의무 및 행사방법<br/>
+                      7.  개인정보의 기술적/관리적 보호 대책<br/>
+                      8.  개인정보보호 책임자 및 담당자<br/>
+                      9.  기타 부가방침<br/>
+                    </p>
+                  </div>
+                </div>
+                <div class="popup-footer">
+                  <p class="pop-btn colse" id="close">닫기</p>
+                </div>
+              </div>
+            </div>
+            <!-- //개인정보처리방침 팝업 -->
+            
+            <!-- Success 팝업 -->
+            <div class="popup-wrap" id=popup-apply>
+              <div class="popup-container-alert">
+                <div class="popup-body-alert">
+                  <div class="alertS">
+                    <img src="img/check_color.png" alt="성공">
+                  </div>
+                  <div class="alert-pop-text">
+                    <p class="alert-tit">Success</p>
+                    <p class="alert-info">
+                      Your message was sent successfuly<br/>
+                      문의전화 (02-599-1601)
+                    </p>
+                  </div>
+                </div>
+                <div class="popup-footer">
+                  <p class="pop-btn colse">닫기</p>
+                </div>
+              </div>
+            </div>
+            <!-- //Success 팝업 -->
+
+            <!-- alert 팝업 -->
+            <div class="popup-wrap" id=popup-file>
+              <div class="popup-container-alert">
+                <div class="popup-body-alert">
+                  <div class="alertS">
+                    <img src="img/check_red.png" alt="성공">
+                  </div>
+                  <div class="alert-pop-text">
+                    <p class="alert-tit">Failed to Upload the File</p>
+                    <p class="alert-info">
+                      Unable to access server<br/>
+                      문의전화 (02-599-1601) 
+                    </p>
+                  </div>
+                </div>
+                <div class="popup-footer">
+                  <p class="pop-btn colse">닫기</p>
+                </div>
+              </div>
+            </div>
+            <!-- //alert 팝업 -->
+
+          </div>
+        </section>
+      </div>
+      <div class="tooltip">
+        core
+      </div>
+    </main>
+
+  </div>
+
+
+
+
+
+
+
+  <script>
+    $(document).ready(function () {
+      // 화면크기 설정
+      $(".home-section , .home-bg").css({
+        "height": $(window).height() + 'px' , "width": $(window).width() + 'px'
+      })
+
+      // 메뉴 버튼
+      $(".menu-toggle").click(function () {
+        $(this).toggleClass("active");
+        $(".menu-container").fadeToggle();
+
+      });
+
+      // 메뉴 마우스오버시 circle 생기기
+      $(".menu-item").mouseover(function () {
+        $(this).children(".circle").show().css({
+          "display": "inline-block"
+        });
+      }).mouseout(function () {
+        $(this).children(".circle").fadeOut()
+      });
+
+      // 다음 비디오로 넘어가기
+      $(function () {
+        var auds = document.getElementsByClassName('myvideo');
+        var audLength = auds.length;
+        for (var i = 0; i < audLength; i++) {
+          auds[i].addEventListener('ended', function (e) {
+            $(".quick-nav > li").eq($(".quick-nav > li.active").index() + 1).trigger("click");
+
+          });
+        }
+
+
+        // 퀵 버튼
+        var $nav = $(".quick-nav li"),
+          $contents = $(".home-section");
+        $nav.click(function (x) {
+          x.preventDefault();
+          //$(this).addClass('active').siblings().removeClass('active');
+          var idx = $(this).index();
+          var section = $contents.eq(idx)
+          var sectionDistance = section.offset().top;
+
+          $('html').stop().animate({
+            scrollTop: sectionDistance
+          });
+
+          if (idx < 3) {
+            $(".tooltip").text("core");
+            for (var i = 0; i < $(".myvideo").length; i++) {
+              var vid = $(".myvideo").eq(i).get(0);
+              if (i == idx) {
+                vid.play();
+              } else {
+                vid.pause();
+                vid.current_time = 0;
+              }
+            }
+          } else {
+            $(".tooltip").text("Solution")
+          }
+
+        });
+
+        $(window).scroll(function () {
+          $contents.each(function () {
+            if ($(this).offset().top <= $(window).scrollTop()) {
+              var idx = $(this).index();
+              $nav.removeClass('active');
+              $nav.eq(idx).addClass('active');
+            }
+          });
+        });
+      });
+
+      // tooltip
+      $('.tooltip').css('opacity', 0);
+      $('.quick-nav li').on('mouseover', function () {
+        if ($(this).hasClass('active')) {
+          var left = $(this).offset().left;
+          var top = $(this).offset().top;
+          $('.tooltip').css({
+            'left': left - $('.tooltip').width() - 15,
+            'top': top + 7,
+            'opacity': 1,
+          });
+        }
+      }).on('mouseleave', function () {
+        $('.tooltip').css({
+          'opacity': 0,
+        });
+      });
+
+      // popup
+      $(function(){
+      $(".popup-open").click(function(){
+        $("#popup").fadeIn();
+        $(".cont-project.apply").css({"backgroud-color":"rgba(0, 0, 0, 0.16)"})
+      });
+   
+      $("#close").click(function(){
+          modalClose();
+      });
+      function modalClose(){
+        $("#popup").fadeOut();
+      }
+    });
+
+
+      // contact 
+      $(".contact.cont-inq").on("click", function (e) {
+        $(".cont-project.cont").removeClass("hide");
+        $(".cont-project.apply .cont-top .cont-inner").addClass("hide");
+        $(".cont-project.apply .form-container").addClass("hide");
+        $(".cont-user").addClass("hide");
+        $(".cont-top").addClass("hide");
+        $(".home-section.cont-section").css("height", "564px")
+        $(".home-section.cont-section").find(".cont-tit").html("Create a service <span>with INFOIN</span>")
+
+      })
+
+      $(".contact.apply_inq").on("click", function (e) {
+        $(".cont-project.cont").addClass("hide");
+        $(".cont-project.apply .cont-top .cont-inner").addClass("hide");
+        $(".cont-project.apply .form-container").removeClass("hide");
+        $(".cont-project.apply").removeClass("hide");
+        $(".cont-user").addClass("hide");
+        $(".cont-project.cont .cont-top").addClass("hide");
+        $(".home-section.cont-section").css("height", "564px")
+        $(".home-section.cont-section").find(".cont-tit").html("Be an INFOIN'S <span>PEOPLE</span>")
+      })
+
+      const INVALID_KEYS = [13, 16, 17, 18, 19, 27, 33, 34, 35, 36, 37, 38, 39, 40, 45, 46];
+      $("#button1").on("click", function(e){
+        e.preventDefault();
+        $(".cont-user").removeClass("hide");
+        $(".cont-project.cont").addClass("hide");
+        $(".cont-project.cont .cont-top").addClass("hide");
+        $(".cont-project.apply .cont-top .cont-inner").addClass("hide");
+
+      })
+      $("#button3").on("click", function(e){
+        e.preventDefault();
+        $(".cont-user").removeClass("hide");
+        $(".cont-top").addClass("hide");
+        $(".cont-project.apply .cont-top .cont-inner").addClass("hide");
+        $(".cont-project.apply .form-container").addClass("hide");
+      });
+    })
+
+  </script>
+
+
+
+</body>
+
+</html>

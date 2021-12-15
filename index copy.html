@@ -1,0 +1,2336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache">
+  <link rel="stylesheet" type="text/css" href="css/index.css" />
+
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+
+  <!-- add son -->
+  <script type="text/javascript">
+    function num_to_str(num) {
+      let output = '';
+      if (typeof num === 'number') {
+        if (num > 10) {
+          output += num;
+        } else if (num >= 0 && num < 10) {
+          output += `0${num}`
+        }
+      }
+      console.log(output, num);
+      return output;
+    }
+
+    window.onload = function () {
+      var elm = ".home-section";
+      console.log(elm);
+      var page4curImgIdx = 0;
+      var page5curImgIdx = 0;
+      var page6curImgIdx = 0;
+      $(elm).each(function (index) {
+        // 개별적으로 Wheel 이벤트 적용
+        $(this).on("mousewheel DOMMouseScroll", function (e) {
+          e.preventDefault();
+          var delta = 0;
+          var isMoveUp = false;
+          var isMoveDown = false;
+          if (!event) event = window.event;
+          if (event.wheelDelta) {
+            delta = event.wheelDelta / 120;
+            if (window.opera) delta = -delta;
+          } else if (event.detail)
+            delta = -event.detail / 3;
+          var moveTop = $(window).scrollTop();
+          var elmSelecter = $(elm).eq(index);
+          // 마우스휠을 위에서 아래로
+          if (delta < 0) {
+            if ($(elmSelecter).next() != undefined) {
+              try {
+                moveTop = $(elmSelecter).next().offset().top;
+                isMoveUp = false;
+                isMoveDown = true;
+              } catch (e) {}
+            }
+            // 마우스휠을 아래에서 위로
+          } else {
+            if ($(elmSelecter).prev() != undefined) {
+              try {
+                moveTop = $(elmSelecter).prev().offset().top;
+                isMoveUp = true;
+                isMoveDown = false;
+              } catch (e) {}
+            }
+          }
+          if (index == 0) {
+            var vid = $(".myvideo").eq(1).get(0);
+            vid.play();
+            var prevVid = $(".myvideo").eq(0).get(0);
+            prevVid.pause();
+            prevVid.current_time = 0;
+          } else if (index == 1) {
+            if (isMoveUp && !isMoveDown) {
+              var vid = $(".myvideo").eq(0).get(0);
+              vid.play();
+              var prevVid = $(".myvideo").eq(1).get(0);
+              prevVid.pause();
+              prevVid.current_time = 0;
+            } else if (!isMoveUp && isMoveDown) {
+              var vid = $(".myvideo").eq(2).get(0);
+              vid.play();
+              var prevVid = $(".myvideo").eq(1).get(0);
+              prevVid.pause();
+              prevVid.current_time = 0;
+            }
+          } else if (index == 2) {
+            if (isMoveUp && !isMoveDown) {
+              var vid = $(".myvideo").eq(1).get(0);
+              vid.play();
+              var prevVid = $(".myvideo").eq(2).get(0);
+              prevVid.pause();
+              prevVid.current_time = 0;
+            } else if (!isMoveUp && isMoveDown) {
+
+              var prevVid = $(".myvideo").eq(2).get(0);
+              prevVid.pause();
+              prevVid.current_time = 0;
+
+              $(".company-tit").html('');
+
+              let html = '';
+              html += '<li>';
+              html += '   <a class="active">'
+              html += '       <span class="txt">WE WANT TO BE</span>'
+              html += '       <span class="line"></span>'
+              html += '   </a>'
+              html += '</li>'
+              html += '<li>';
+              html += '   <a class="active">'
+              html += '       <span class="txt">YOUR FRIEND</span>'
+              html += '       <span class="line"></span>'
+              html += '   </a>'
+              html += '</li>'
+              $(".company-tit").html(html);
+            }
+          } else if (index == 3) {
+            if (isMoveUp && !isMoveDown) {
+              var vid = $(".myvideo").eq(2).get(0);
+              vid.play();
+            } else if (!isMoveUp && isMoveDown) {
+              $(".tooltip").text("Solution");
+            }
+
+            //<span class="line"></span>
+
+            /* <ul class="company-tit">
+                  <li>
+                    <a class="active">
+                      <span class="txt">WE WANT TO BE</span>
+                      <span class="line"></span>
+                    </a>
+                  </li>
+                  <li>
+                    <a>
+                    <span class="txt">YOUR FRIEND</span>
+                      <span class="line"></span>
+                    </a>
+                  </li>
+                </ul> */
+          }
+          /* <div class="solution-project">
+          <div class="scroll-move">
+            <div class="scroll-num scroll-num-top">01</div>
+            <div class="scroll-bar"></div>
+            <div class="scroll-num scroll-num-bottom">03</div>
+          </div> */
+          //0 0 255
+          //0 0 85
+          if (index == 4) {
+
+
+            // 화면이 위로
+            if (isMoveUp && !isMoveDown) {
+              $(".tooltip").text("core");
+              if (page4curImgIdx != 0) {}
+              $(".home-section.home-section-bg .solution-project .scroll-move .scroll-num-top").css("color",
+                'hsl(0, 0%, 100%)');
+
+
+
+
+
+
+              $(".company-tit").html('');
+
+              let html = '';
+              html += '<li>';
+              html += '   <a class="active">'
+              html += '       <span class="txt">WE WANT TO BE</span>'
+              html += '       <span class="line"></span>'
+              html += '   </a>'
+              html += '</li>'
+              html += '<li>';
+              html += '   <a class="active">'
+              html += '       <span class="txt">YOUR FRIEND</span>'
+              html += '       <span class="line"></span>'
+              html += '   </a>'
+              html += '</li>'
+              $(".company-tit").html(html);
+              //화면이 아래로
+            } else if (!isMoveUp && isMoveDown) {
+              $(".solution-project .scroll-move .scroll-num-top").css("color", 'hsl(0, 0%, 100%)');
+
+            }
+            var imgF = document.querySelector(".imgF");
+            var imgS = document.querySelector(".imgS");
+
+            if (delta < 0) {
+              if (page4curImgIdx >= 2) {
+                // 화면 이동 0.8초(800)
+                $("html,body").stop().animate({
+                  scrollTop: moveTop + 'px'
+                }, {
+                  duration: 800,
+                  complete: function () {}
+                });
+              }
+              if (page4curImgIdx < 2) {
+                page4curImgIdx++;
+              }
+            } else {
+              if (page4curImgIdx == 0) {
+                // 화면 이동 0.8초(800)
+                $("html,body").stop().animate({
+                  scrollTop: moveTop + 'px'
+                }, {
+                  duration: 800,
+                  complete: function () {}
+                });
+              }
+              if (page4curImgIdx > 0) {
+                page4curImgIdx--;
+              }
+            }
+            var target = $(".home-section").eq(index).get(0);
+            const solution_desc = $(target).find(".solution-desc");
+            let html = '';
+            switch (page4curImgIdx) {
+              case 0: {
+                html += '<p class="solution-tit">';
+                html += ' 수원 컨벤션'
+                html += '</p>'
+                html += '<div class="solution-tit-sub">'
+                html += '   <p>실사기반 3D 공간정보 콘텐츠 및</p>'
+                html += '   <p>실시간 데이터 시각화 시스템</p>'
+                html += '</div>'
+
+                solution_desc.html(html);
+
+                break;
+              }
+              case 1: {
+                html += '<p class="solution-tit">';
+                html += ' 백제여유'
+                html += '</p>'
+                html += '<div class="solution-tit-sub">'
+                html += '   <p>공주, 부여 지역 주요 문화재 실사 기반 공간</p>'
+                html += '   <p>정보 및 안내 콘텐츠</p>'
+                html += '</div>'
+
+                solution_desc.html(html);
+
+                break;
+              }
+              case 2: {
+                html += '<p class="solution-tit">';
+                html += ' 봉선로 르 오네뜨 VR'
+                html += '</p>'
+                html += '<div class="solution-tit-sub">'
+                html += '   <p>실사기반 3D 공간정보를 통한</p>'
+                html += '   <p>온라인 모델하우스</p>'
+                html += '</div>'
+
+                solution_desc.html(html);
+
+                break;
+              }
+            }
+            /*target.style.backgroundImage = `url('img/mockup_info${page5curImgIdx}.png')`*/
+            const scrollNum = page4curImgIdx + 1;
+            $(target).find(".scroll-num-top").text(num_to_str(page4curImgIdx + 1));
+            imgF.src = "./img/solution_3d" + page4curImgIdx + ".jpg";
+            imgS.src = "./img/solution_sub_3d" + page4curImgIdx + ".jpg";
+
+          } else if (index == 5) {
+            var imgF = document.querySelector(".imgF1");
+            var imgS = document.querySelector(".imgS1");
+            /*if(isMoveDown && !isMoveUp){
+              var target = $(".home-section").eq(index + 1).get(0);
+              target.style.backgroundImage = "url('img/mockup_info2.png')"
+            
+            }*/
+
+            if (delta < 0) {
+              if (page5curImgIdx >= 2) {
+                // 화면 이동 0.8초(800)
+                $("html,body").stop().animate({
+                  scrollTop: moveTop + 'px'
+                }, {
+                  duration: 800,
+                  complete: function () {}
+                });
+              }
+              if (page5curImgIdx < 2) {
+                page5curImgIdx++;
+              }
+            } else {
+              if (page5curImgIdx == 0) {
+                // 화면 이동 0.8초(800)
+                $("html,body").stop().animate({
+                  scrollTop: moveTop + 'px'
+                }, {
+                  duration: 800,
+                  complete: function () {}
+                });
+              }
+              if (page5curImgIdx > 0) {
+                page5curImgIdx--;
+              }
+            }
+            var target = $(".home-section").eq(index).get(0);
+            const solution_desc = $(target).find(".solution-desc");
+            let html = '';
+            switch (page5curImgIdx) {
+              case 0: {
+                html += '<p class="solution-tit">';
+                html += ' Genie'
+                html += '</p>'
+                html += '<div class="solution-tit-sub">'
+                html += ' 유학지원 프로그램 제공 시스템'
+                html += '</div>'
+
+                solution_desc.html(html);
+
+                break;
+              }
+              case 1: {
+                html += '<p class="solution-tit">';
+                html += ' TeuniTeuni'
+                html += '</p>'
+                html += '<div class="solution-tit-sub">'
+                html += ' 어린이 놀이체육 프로그램 제공 시스템'
+                html += '</div>'
+
+                solution_desc.html(html);
+
+                break;
+              }
+              case 2: {
+                html += '<p class="solution-tit">';
+                html += ' 담양 스마트팜'
+                html += '</p>'
+                html += '<div class="solution-tit-sub">'
+                html += '   ICT를 통한 원격 온실 모니터링 및 농장 유지관리 시스템'
+                html += '</div>'
+
+                solution_desc.html(html);
+
+                break;
+              }
+            }
+
+
+            $(target).find(".scroll-num-top").text(num_to_str(page5curImgIdx + 1));
+            target.style.backgroundImage = `url('img/mockup_info${page5curImgIdx}.png')`
+            imgF.src = "./img/sol_info" + page5curImgIdx + ".png";
+            imgS.src = "./img/sol_sub_info" + page5curImgIdx + ".png";
+
+          } else if (index == 6) {
+            var imgF = document.querySelector(".imgF2");
+            var imgS = document.querySelector(".imgS2");
+            if (delta < 0) {
+              if (page6curImgIdx >= 1) {
+                // 화면 이동 0.8초(800)
+                $("html,body").stop().animate({
+                  scrollTop: moveTop + 'px'
+                }, {
+                  duration: 800,
+                  complete: function () {}
+                });
+              }
+              if (page6curImgIdx < 1) {
+                page6curImgIdx++;
+              }
+            } else {
+              if (page6curImgIdx == 0) {
+                // 화면 이동 0.8초(800)
+                $("html,body").stop().animate({
+                  scrollTop: moveTop + 'px'
+                }, {
+                  duration: 800,
+                  complete: function () {}
+                });
+              }
+              if (page6curImgIdx > 0) {
+                page6curImgIdx--;
+              }
+            }
+
+            var target = $(".home-section").eq(index).get(0);
+
+            const solution_desc = $(target).find(".solution-desc");
+            let html = '';
+            switch (page6curImgIdx) {
+              case 0: {
+                html += '<p class="solution-tit">';
+                html += ' 수유시장'
+                html += '</p>'
+                html += '<div class="solution-tit-sub">'
+                html += '   <p>실사기반 전통시장 3D를 통한 정보제공 및</p>'
+                html += '   <p>상품판매 시스템</p>'
+                html += '</div>'
+
+                solution_desc.html(html);
+
+                break;
+              }
+              case 1: {
+                html += '<p class="solution-tit">';
+                html += ' 미니방가'
+                html += '</p>'
+                html += '<div class="solution-tit-sub">'
+                html += '   <p>실사기반 3D 공간정보를 활용한</p>'
+                html += '   <p>숙박예약 시스템</p>'
+                html += '</div>'
+
+                solution_desc.html(html);
+
+                break;
+              }
+            }
+
+            $(target).find(".scroll-num-top").text(num_to_str(page6curImgIdx + 1));
+            var corrected_index = page6curImgIdx >= 2 ? 1 : page6curImgIdx;
+            target.style.backgroundImage = `url('./img/mockup_co${corrected_index}.png')`
+            imgF.src = "./img/sol_co" + page6curImgIdx + ".png";
+            imgS.src = "./img/sol_sub_co" + page6curImgIdx + ".png";
+          } else {
+            // 화면 이동 0.8초(800)
+            $("html,body").stop().animate({
+              scrollTop: moveTop + 'px'
+            }, {
+              duration: 800,
+              complete: function () {}
+            });
+          }
+
+
+
+          // var sValule; 
+          // document.addEventListener('scroll', function(){
+          //   sValue  = document.documentElement.scrollTop /100 ;
+          //   var imgValue = Math.floor(sValue % 3);
+          //   console.log(imgValue);
+
+          //   var bl = document.querySelector(".home-section-bg");
+          //   var imgF = document.querySelector(".imgF");
+          //   var imgS = document.querySelector(".imgS");
+
+
+          //   //console.dir(bl);
+          //   imgF.src = "./img/solution_3d"+imgValue+".jpg";
+          //   imgS.src = "./img/solution_sub_3d"+imgValue+".jpg";
+          // });
+
+        });
+      });
+    }
+  </script>
+  <!-- add son -->
+
+  <title>infoin</title>
+</head>
+
+<body>
+  <div id="wrap">
+    <header id="header">
+      <div class="header-main">
+        <div class="header-inner">
+          <h1 class="main-logo">
+            <a href="#none" title="main-home">
+              <img src="img/logo.svg" alt="infoin-logo img" />
+            </a>
+          </h1>
+          <nav class="menu-toggle">
+            <span class="nav-line"></span>
+            <span class="nav-line"></span>
+          </nav>
+        </div>
+      </div>
+      <div class="menu-container">
+        <div class="menu-content">
+          <div class="menu-left">
+            <ul>
+              <li class="menu-item">
+                <a href="#none" title="core">
+                  core
+                </a>
+                <span class="circle"></span>
+              </li>
+              <li class="menu-item">
+                <a href="#none" title="about">
+                  about
+                </a>
+                <span class="circle"></span>
+              </li>
+              <li class="menu-item">
+                <a href="#none" title="solution">
+                  solution
+                </a>
+                <span class="circle"></span>
+              </li>
+              <li class="menu-item">
+                <a href="#none" title="contact">
+                  contact
+                </a>
+                <span class="circle"></span>
+              </li>
+            </ul>
+            <div class="menu-btn">
+              <p>
+                <a href="http://in4in.com/3d.html" title="3D.R 바로가기">
+                  3D.R 바로가기
+                </a>
+              </p>
+              <p>
+                <a href="#none" title="DRONVOLAR">
+                  DRONVOLAR
+                </a>
+              </p>
+            </div>
+          </div>
+          <div class="menu-right">
+            <div class="menu-logo">
+              <div>
+                <img src="img/menu_logo.svg" alt="logo" />
+              </div>
+            </div>
+            <div class="menu-com-info">
+              <dl class="effect hover">
+                <dt>
+                  Address
+                </dt>
+                <dd>
+                  <a href="https://map.naver.com/v5/search/%EC%9D%B8%ED%8F%AC%EC%9D%B8/place/37548634?c=14140468.3350683,4508522.0193795,15,0,0,0,dh&placePath=%3Fentry%253Dbmp"
+                    title="address">
+                    서울 강남구 테헤란로 4길35<br />
+                    프리스티지투 4층
+                  </a>
+                </dd>
+              </dl>
+              <dl class="effect hover">
+                <dt>
+                  Tel
+                </dt>
+                <dd>
+                  02-599-1601
+                </dd>
+              </dl>
+              <dl class="effect hover">
+                <dt>
+                  Fax
+                </dt>
+                <dd>
+                  02-599-1602
+                </dd>
+              </dl>
+              <dl class="effect hover">
+                <dt>Mail</dt>
+                <dd>
+                  <a href="https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=mailto&to=szipz@theinfoin.com"
+                    title="mail">
+                    szipz@theinfoin.com
+                  </a>
+                </dd>
+              </dl>
+              <span class="data popup-open">
+                개인정보처리방침
+              </span>
+              <p class="copy">
+                Copyright © INFOIN CO.,Ltd. All Rights Reserved.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main id="main">
+      <ul class="quick-nav">
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+      <div class="home-main">
+        <section class="home-section">
+          <div class="video-frame">
+            <video class="myvideo" src="video/samplevideo.mp4" muted autoplay></video>
+          </div>
+          <div class="home-bg"></div>
+          <div class="project-info">
+            <h3 class="project-tit">
+              <a href="#" title="integrated metaverse">integrated metaverse</a>
+            </h3>
+            <p class="project-desc">
+              우리는 디지털 속에 진짜 세상을 만들어가고 있습니다<br />
+              그 세계에 참여하는 모두가 새롭게 소통하고 경험하도록 하여<br />
+              누구에게나 이로운 가치를 창출해 나갈 것입니다
+            </p>
+          </div>
+        </section>
+        <section class="home-section">
+          <div class="video-frame">
+            <video class="myvideo" src="video/infoin.mp4" muted></video>
+          </div>
+          <div class="home-bg"></div>
+          <div class="project-info">
+            <h3 class="project-tit">
+              <a href="#none" title="integrated metaverse">INFOPLATFORM</a>
+            </h3>
+            <p class="project-desc">
+              지금 이 시점의 트렌드를 끊임없이 연구하고 공감하여<br />
+              당신에게 딱 맞는 INFOPLATFORM을 제공합니다
+            </p>
+          </div>
+        </section>
+        <section class="home-section">
+          <div class="video-frame">
+            <video class="myvideo" src="video/samplevideo.mp4" muted></video>
+          </div>
+          <div class="home-bg"></div>
+          <div class="project-info">
+            <h3 class="project-tit">
+              <a href="#" title="integrated metaverse">3D.R</a>
+            </h3>
+            <p class="project-desc">
+              우리의 3D는 그 ' Real' 자체입니다<br />
+              현장에 있는 것처럼 생생한 에 더해진 다양한 콘텐츠들은<br />
+              당신에게 더 특별한 일상을 제공합니다
+            </p>
+          </div>
+        </section>
+        <section class="home-section sentence-area active">
+          <div class="company-info">
+            <div class="company-desc-left">
+              <div class="company-text">
+                <!--<p class="company-tit">
+                  WE WANT TO BE<br/>
+                  YOUR FRIEND
+                </p>-->
+                <div class="com-list">
+                  <ul class="company-tit">
+                    <li>
+                      <a class="active">
+                        <span class="txt">WE WANT TO BE</span>
+                        <span class="line"></span>
+                      </a>
+                    </li>
+                    <li>
+                      <a>
+                        <span class="txt">YOUR FRIEND</span>
+                        <span class="line"></span>
+                      </a>
+                    </li>
+                  </ul>
+                  <p class="company-desc">
+                    우리는 당신을 위한 정보통신 기술을 개발하겠다는 일념으로 모였습니다.<br />
+                    우리의 목표는 소통을 통해 당신의 개성을 파악하고, 능력이 돋보일 수 있도록<br />
+                    우리가 가진 모든 것을 당신에게 꼭 맞게 담아주는 것입니다.<br />
+                    우리는 당신의 성공을 끝까지 함께하는 친구가 되고 싶습니다.
+                  </p>
+                </div>
+                <p class="company-btn">
+                  <a href="http://in4in.com/3dr_brochure_v4.pdf" title="회사소개서">회사소개서</a>
+                </p>
+              </div>
+            </div>
+            <div class="company-desc-right">
+              <div class="sentence">
+                <div class="column">
+                  <p></p>
+                  <p>TECH</p>
+                  <p></p>
+                  <p>CUST</p>
+                  <p></p>
+                  <p></p>
+                </div>
+                <div class="main-transition">
+                  <p class="letter">I</p>
+                  <p class="letter">N</p>
+                  <p class="letter">F</p>
+                  <p class="letter">O</p>
+                  <p class="letter">I</p>
+                  <p class="letter">N</p>
+                </div>
+                <div class="column">
+                  <p>NFORMATION</p>
+                  <p>OLOGY</p>
+                  <p>OR</p>
+                  <p>MER</p>
+                  <p>NTEGRATION</p>
+                  <p>EEDS</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="home-section home-section-bg">
+          <div class="solution">
+            <div class="keyword">
+              <p class="keyword-tit">3D.R</p>
+              <div class="words-box">
+                <ul class="words">
+                  <li>3D 데이터 최적화</li>
+                  <li>드론 촬영</li>
+                  <li>3D&loT 융복합</li>
+                  <li>VR/AR 콘텐츠</li>
+                </ul>
+              </div>
+            </div>
+            <div class="keyword-info">
+              3D.R는 드론 촬영을 통해 추출한 데이터가 보여주는 모든 것을 고품질·저용량의 실사로 3D 제작하여<br />
+              인터넷이 가능한 모든 환경에서 공간 정보 체험이 가능한 새로운 디지털 트윈 기술입니다.
+            </div>
+          </div>
+          <div class="solution-project">
+            <div class="scroll-move">
+              <div class="scroll-num scroll-num-top">01</div>
+              <div class="scroll-bar">
+                <div>
+                  <img src="img/mouse.png">
+                </div>
+              </div>
+              <div class="scroll-num scroll-num-bottom">03</div>
+            </div>
+            <div class="solution-imgArea">
+              <div class="solution-img main-img0">
+                <img class="imgF" src="img/solution_3d0.jpg" alt="solution_3d0 img" />
+              </div>
+            </div>
+          </div>
+          <div class="illust-img">
+            <img src="img/people.png" alt="illust img" />
+          </div>
+          <div class="solution-info">
+            <div class="solution-text">
+              <div class="solution-desc">
+                <p class="solution-tit">
+                  수원 컨벤션
+                </p>
+                <div class="solution-tit-sub">
+                  <p>실사 기반 3차원 공간정보 콘텐츠</p>
+                  <p>실시간 데이터 시각화 시스템 구축</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="solution_sub-imgArea">
+            <div class="solution_sub-img sub-img0">
+              <img class="imgS" src="img/solution_sub_3d0.png" alt="/solution_sub_3d0" />
+            </div>
+          </div>
+        </section>
+        <section class="home-section home-info-mockup">
+          <div class="solution">
+            <div class="keyword">
+              <p class="keyword-tit">INFOPLATFORM</p>
+              <div class="words-box">
+                <ul class="words">
+                  <li>Platform</li>
+                  <li>Big Data</li>
+                  <li>Process</li>
+                  <li>Development lot</li>
+                </ul>
+              </div>
+            </div>
+            <div class="keyword-info">
+              분석, 설계, 개발, 테스트로 완성된 맞춤형 어플리케이션 서비스와 컴포넌트를 제공합니다. <br />
+              서비스 특성에 따라 디바이스와 IoT센서를 연동해 실시간으로 환경을 제어하는 IoT 기술 적용이 가능합니다.
+            </div>
+          </div>
+          <div class="solution-project">
+            <div class="scroll-move">
+              <div class="scroll-num scroll-num-top">01</div>
+              <div class="scroll-bar">
+                <div>
+                  <img src="img/mouse.png">
+                </div>
+              </div>
+              <div class="scroll-num scroll-num-bottom">03</div>
+            </div>
+            <div class="solution-imgArea">
+              <div class="solution-img main-img0">
+                <img class="imgF1" src="img/sol_info0.png" alt="solution_3d0 img" />
+              </div>
+            </div>
+          </div>
+          <div class="solution-info">
+            <div class="solution-text">
+              <div class="solution-desc">
+                <p class="solution-tit">
+                  Genie
+                </p>
+                <div class="solution-tit-sub">
+                  유학지원 프로그램 제공 시스템
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="solution_sub-imgArea">
+            <div class="solution_sub-img sub-img0">
+              <img class="imgS1" src="img/sol_sub_info0.png" alt="/solution_sub_3d0" />
+            </div>
+          </div>
+        </section>
+        <section class="home-section home-co-mockup">
+          <div class="solution">
+            <div class="keyword">
+              <p class="keyword-tit">Commerce</p>
+              <div class="words-box">
+                <ul class="words">
+                  <li>Live-Commerce</li>
+                  <li>Reservation</li>
+                  <li>결제시스템 분석 및 보고</li>
+                  <li>검색관리</li>
+                </ul>
+              </div>
+            </div>
+            <div class="keyword-info">
+              고객별, 서비스별 고유 문화와 제도에 맞게 맞춤 설정하여 품목관리, 판매관리, 트래킹 추적 보고서 등<br />
+              효율적인 커머스 관리가 가능한 환경을 제공합니다.
+            </div>
+          </div>
+          <div class="solution-project">
+            <div class="scroll-move">
+              <div class="scroll-num scroll-num-top">01</div>
+              <div class="scroll-bar">
+                <div>
+                  <img src="img/mouse.png">
+                </div>
+              </div>
+              <div class="scroll-num scroll-num-bottom">03</div>
+            </div>
+            <div class="solution-imgArea">
+              <div class="solution-img main-img0">
+                <img class="imgF2" src="img/sol_co0.png" alt="solution_3d0 img" />
+              </div>
+            </div>
+          </div>
+          <div class="solution-info">
+            <div class="solution-text">
+              <div class="solution-desc">
+                <p class="solution-tit">
+                  수유시장
+                </p>
+                <div class="solution-tit-sub">
+                  <p>실사기반 전통시장 3D를 통한 정보제공 및</p>
+                  <p>상품판매 시스템</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="solution_sub-imgArea">
+            <div class="solution_sub-img sub-img0">
+              <img class="imgS2" src="img/sol_sub_co0.png" alt="/solution_sub_3d0" />
+            </div>
+          </div>
+        </section>
+        <section class="home-section cont-section">
+          <div class="cont-main">
+            <div class="cont-info">
+              <h3 class="cont-tit">contact</h3>
+              <div class="cont-com-info">
+                <dl>
+                  <dt>Address</dt>
+                  <dd class="rotate first">
+                    <a data-link="서울 강남구 테헤란로 4길35
+                    프리스티지투 4층"></a>
+                  </dd>
+                </dl>
+                <dl>
+                  <dt>Tel</dt>
+                  <dd class="rotate">
+                    <a data-link="02-599-1601"></a>
+                  </dd>
+                </dl>
+                <dl>
+                  <dt>Fax</dt>
+                  <dd class="rotate">
+                    <a data-link="02-599-1602"></a>
+                  </dd>
+                </dl>
+                <dl>
+                  <dt>Mail</dt>
+                  <dd class="rotate last">
+                    <a data-link="szipz@theinfoin.com"></a>
+                  </dd>
+                </dl>
+              </div>
+            </div>
+            <div class="cont-user">
+              <div class="contact cont-inq">
+                <div class="pro-tit">
+                  <div class="call">
+                    <img src="img/left_call.png" alt="call img" />
+                  </div>
+                  <p class="inq-text">프로젝트 문의</p>
+                </div>
+                <div class="cont-img">
+                  <p class="circle-bg"><img src="img/left_people.png" alt="cont_img2" /></p>
+                </div>
+              </div>
+              <div class="contact apply_inq">
+                <div class="pro-tit">
+                  <div class="call">
+                    <img src="img/right_call.png" alt="call img" />
+                  </div>
+                  <p class="inq-text">입사지원 문의</p>
+                </div>
+                <div class="cont-img">
+                  <p class="circle-bg"><img src="img/right_people.png" alt="cont_img2" /></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="cont-project cont hide">
+          <div class="cont-top">
+            <div class="cont-inner">
+              <div class="cont-inner-tit">
+                Be an INFOIN'S <span>PEOPLE</span>
+              </div>
+              <div class="cont-com-info">
+                <dl>
+                  <dt>Address</dt>
+                  <dd class="rotate">
+                    <a data-link="서울 강남구 테헤란로 4길35
+                        프리스티지투 4층">서울 강남구 테헤란로 4길35<br />
+                      프리스티지투 4층</a>
+                  </dd>
+                </dl>
+                <dl>
+                  <dt>Tel</dt>
+                  <dd class="rotate">
+                    <a data-link="02-599-1601">02-599-1601</a>
+                  </dd>
+                </dl>
+                <dl>
+                  <dt>Fax</dt>
+                  <dd class="rotate">
+                    <a data-link="02-599-1602">02-599-1602</a>
+                  </dd>
+                </dl>
+                <dl>
+                  <dt>Mail</dt>
+                  <dd class="rotate">
+                    <a data-link="szipz@theinfoin.com">szipz@theinfoin.com</a>
+                  </dd>
+                </dl>
+              </div>
+            </div>
+            <div class="illustImg illust0">
+              <img src="img/illust0.png" alt="일러스트" />
+            </div>
+          </div>
+          <div class="cont-bottom">
+            <div class="illustImg illust-bg">
+              <img src="img/illust_bg.png" alt="일러스트" />
+            </div>
+            <div class="illustImg illust1">
+              <img src="img/illust1.png" alt="일러스트" />
+            </div>
+            <div class="illustImg illust2">
+              <img src="img/illust2.png" alt="일러스트" />
+            </div>
+            <div class="cont-formArea">
+              <form id="cont-form" action="#none" methid="post">
+                <fieldset>
+                  <legend>프로젝트문의</legend>
+                  <div class="form-inner" id="contactDiv">
+                    <div class="form-text">
+                      <h3 class="form-tit">
+                        contact progect
+                      </h3>
+                      <p class="form-desc">
+                        사람을 위한 기술을 만들어 나가는 인포인은 여러분의 생각을 귀담아 듣고<br />
+                        이해하여 필요한 서비스와 정확한 솔루션을 제공합니다 .
+                      </p>
+                    </div>
+                    <div class="user-info">
+                      <div class="info">
+                        <p>
+                          <span class="size">회사명</span>은<input type="text" name="com_name" />&nbsp;이고,
+                        </p>
+                        <p>
+                          <span class="size">연락처</span>는 <input type="text" name="com_tel" maxlength='13'/>입니다.
+                        </p>
+                        <p>
+                          <span class="size">이메일</span>은 <input type="text" name="com_email" />입니다.
+                        </p>
+                      </div>
+                      <div class="chkBox">
+                        <p>문의할 프로젝트를 선택하세요.</p>
+                        <input type="checkbox" name="com_inquiry" value="2"><label for="3D 콘텐츠">3D 콘텐츠</label>
+                        <input type="checkbox" name="com_inquiry" value="4"><label for="메타버스 제작">메타버스 제작</label>
+                        <input type="checkbox" name="com_inquiry" value="8"><label for="소프트웨어 제작">소프트웨어 제작</label>
+                        <input type="checkbox" name="com_inquiry" value="16"><label for="드론 촬영">드론 촬영</label>
+                        <input type="checkbox" name="com_inquiry" value="32"><label for="기타">기타</label>
+                      </div>
+                      <div class="textArea`">
+                        <p>의뢰내용은 아래와 같아요.</p>
+                        <textarea id="textarea0" name="com_content"></textarea>
+                      </div>
+                      <div class="fileArea">
+                        <p class="fileText">검토할 파일을 첨부할게요</p>
+                        <p class="file">
+                          <label for="contactFile">
+                            <span class="file-img">
+                              <img src="img/file.png" alt="file img" />
+                            </span>
+                          </label>
+                          <input type="file" id="contactFile" name="uploaded_file" accept=".pdf,.hwp,.zip,.jpg,.jpeg,.ppt,.xls,.doc,.hwp" disabled>
+                        </p>
+                      </div>
+                      <div class="agreement">
+                        <input type="checkbox" name="agreed" /><label for="agreement">&nbsp;<span class="bold">개인정보
+                            처리방침</span>에 동의합니다.<span class="red">&nbsp;(필수)</span></label>
+                      </div>
+                      <div class="btnArea">
+                        <input id="button1" class="cont-button" type="button" value="뒤로가기" title="뒤로가기" />
+                        <input id="button2" class="cont-b
+                        utton" type="submit" value="의뢰하기" title="의뢰하기" />
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+              </form>
+            </div>
+          </div>
+        </section>
+        <section class="cont-project apply hide">
+          <div class="cont-top">
+            <div class="cont-inner hide">
+              <div class="cont-inner-tit">
+                Be an INFOIN'S <span>PEOPLE</span>
+              </div>
+              <div class="cont-com-info">
+                <dl>
+                  <dt>Address</dt>
+                  <dd class="rotate">
+                    <a data-link="서울 강남구 테헤란로 4길35
+                    프리스티지투 4층">서울 강남구 테헤란로 4길35<br/>
+                    프리스티지투 4층</a>
+                  </dd>
+                </dl>
+                <dl>
+                  <dt>Tel</dt>
+                  <dd class="rotate">
+                    <a data-link="02-599-1601">02-599-1601</a>
+                  </dd>
+                </dl>
+                <dl>
+                  <dt>Fax</dt>
+                  <dd class="rotate">
+                    <a data-link="02-599-1602">02-599-1602</a>
+                  </dd>
+                </dl>
+                <dl>
+                  <dt>Mail</dt>
+                  <dd class="rotate">
+                    <a data-link="szipz@theinfoin.com">szipz@theinfoin.com</a>
+                  </dd>
+                </dl>
+              </div>
+            </div>
+            <div class="apply-content">
+              <div class="apply-text">
+                <p class="apply-tit">contact crew</p>
+                <p class="apply-info">
+                  인포인 입사지원을 환영합니다.<br/>
+                  인포인은 오늘보다 더 나은 내일을 위해 함께할 당신을 기다리고 있습니다.
+                </p>
+              </div>
+              <div class="illustImg illust3">                      
+                <img src="img/illust3.png" alt="일러스트"/>                      
+              </div>
+              <p class="motion">
+                <img src="img/triangle.png" alt="triangle 이미지"/>
+              </p>
+            </div>
+          </div>
+          <div class="form-container">
+              <form id="apply_form" action="#none" method="post">
+                <fidelset>
+                  <legend>입사지원</legend>
+                  <div class="apply-form">
+                    <div class="survey">
+                      <span class="num">01</span>
+                      <span class="question">지원 분야를 선택해 주세요.</span>
+                      <div class="survey_item">
+                        <div class="survey_item_chk">
+                          <input type="checkbox" name="inquiry" value="2"><label for="item1">경영/전략 기획자</label>
+                          <input type="checkbox" name="inquiry" value="4"><label for="item2">전략 마케팅</label>
+                          <input type="checkbox" name="inquiry" value="8"><label for="item3">UI/UX designer</label>
+                          <input type="checkbox" name="inquiry" value="16"><label for="item4">Content - Designer</label>
+                          <input type="checkbox" name="inquiry" value="32"><label for="item5">Publisher</label>
+                          <input type="checkbox" name="inquiry" value="64"><label for="item6">Front - end 개발자</label>
+                        </div>
+                        <div class="survey_item_chk">
+                          <input type="checkbox" name="inquiry" value="128"><label for="item7">Content  기획자</label>
+                          <input type="checkbox" name="inquiry" value="256"><label for="item8">영업 마케팅</label>
+                          <input type="checkbox" name="inquiry" value="512"><label for="item9">Web - Designer</label>
+                          <input type="checkbox" name="inquiry" value="1024"><label for="item10">3D modeling designer</label>
+                          <input type="checkbox" name="inquiry" value="2048"><label for="item11">정보 보안</label>
+                          <input type="checkbox" name="inquiry" value="4096"><label for="item12">Back - end 개발자</label>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="survey">
+                    <span class="num">02</span>
+                    <span class="question">기본 정보를 입력해 주세요.</span>
+                    <!--<span class="alert-text">성명을 25자 이내로 작성해주세요.</span>-->
+                    <div class="survey_item">
+
+                      <input id="file0" class="infoP" type="text" placeholder="이름을 입력해주세요" name="name" disabled/>
+                      <span
+                        class="alert aleft1 hide"></span>
+
+                      <input class="infoP" type="text" placeholder="연락처" name="contact" maxlength='13' disabled/>
+                      <span class="alert aleft0 hide"></span>
+
+                      <!--<span class="alert alert0"></span>-->
+                    </div>
+                    <div class="survey_item">
+                      <input class="infoP" type="text" placeholder="이메일" name="email" disabled/>
+                      <span class="alert aleft1 hide"></span>
+
+                      <!--<span class="alert "></span>-->
+                      <input class="infoP" type="text" placeholder="출근 가능일" name="commuteDay" maxlength="10" disabled/>
+                      <span class="alert aleft0 hide"></span>
+
+                      <!--<span class="alert alert0"></span>-->
+
+                    </div>
+                  </div>
+                  <div class="survey">
+                    <!--<span class="num">03</span>
+                    <span class="question">직무와 관련된 서류를 첨부해 주세요.</span>
+                    <p class="file_ex">첨부파일(PDF,ZIP,JPG,PPT,XLS,DOC,HWP / 최대 10MB)</p>
+                    <div class="survey_item">             
+                      <input class="infoF" type="file" placeholder="이력서" name="resume"/>
+                      <input type="file" placeholder="자기소개서" name="selfIntro"/>
+                    </div>
+                    <div class="survey_item">
+                      <input type="file" placeholder="포트폴리오" name="portfolio"/>
+                      <input type="file" placeholder="사이트 URL" name="url"/>
+                    </div>-->
+                    <span class="num">03</span>
+                    <span class="question">직무와 관련된 서류를 첨부해 주세요.</span>
+                    <p class="file_ex">첨부파일(PDF,ZIP,JPG,PPT,XLS,DOC,HWP / 최대 10MB)</p>
+                    <div class="survey_item">
+                        <div class="file-user">
+                          <input id="file_0" type="file" name="resume"/>
+                          <label for="file_0">
+                            이력서
+                            <span class="file-img apply-file">
+                              <img src="img/file.png" alt="file img"/>
+                            </span>
+                          </label>
+                          <input id="file1" type="file" placeholder="자기소개서" name="selfIntro"/>
+                          <label for="file1">
+                            자기소개서
+                            <span class="file-img apply-file1">
+                              <img src="img/file.png" alt="file img"/>
+                            </span>
+                          </label>
+                        </div>
+                    </div>
+                    <div class="survey_item">
+                      <div class="file-user">
+                        <input id="file2" type="file" placeholder="포트폴리오" name="portfolio"/>
+                        <label for="file2">
+                          포트폴리오
+                          <span class="file-img">
+                            <img src="img/file.png" alt="file img"/>
+                          </span>
+                        </label>
+                    
+                        <input id="file3" type="file" placeholder="사이트 URL" name="url"/>
+                        <label for="file3">
+                          사이트 URL
+                          <span class="file-img apply-file1">
+                            <img src="img/file.png" alt="file img"/>
+                          </span>
+                        </label>
+                      </div>
+                    </div>
+                  </div> 
+                  <div class="survey">
+                    <span class="num">04</span>
+                    <span class="question">추가하고 싶은 내용이 있으면 적어주세요.</span>
+                    <div class="textarea"><textarea id="textarea1" name="content"
+                        placeholder="지원동기, 입사 후 포부 등 추가하고 싶은 내용이 있으면 적어주세요." disabled></textarea></div>
+                  </div>
+                  <div class="agreement">
+                    <input id="popup-open"  type="checkbox" name="resume_agreed" disabled/><label for="agreement">&nbsp;<span class="bold">개인정보
+                        처리방침</span>에 동의합니다.<span class="red">&nbsp;(필수)</span></label>
+
+                  </div>
+                  <div class="btnArea">
+                    <input id="button3" type="button" value="뒤로가기" title="뒤로가기"/>
+                    <input id="button4" type="submit" value="지원하기" title="지원하기"/>
+                  </div>
+                </fidelset>
+              </form>
+              <div class="popup-wrap" id=popup>
+                <div class="popup-container">
+                  <div class="popup-body">
+                      
+                    <p class="modal-title">개인정보 수집 및 이용에 해한 안내</p>
+                
+                    <div class="modal-contentBox">
+                      <p>
+                        (주)인포인(이하 회사)는 이용자의 개인정보보호를 매우 중요시하며, 『정보통신망 이용촉진 및 정보보호에 관한 법률』, 『개인정보보호법』등 개인정보보호 관련 규정을 준수하고 있습니다. 회사는 본 개인정보취급방침을 통하여 이용자에게서 제공받은 개인정보를 취급하는데 있어서 취해지는 조치들을 알려드립니다.
+                      </p>
+                      <p>
+                        회사의 대인정보취급방침은 다음과 같은 내용을 담고 있습니다.
+                      </p>
+                      <p class="modal-content">
+                        1.  개인정보의 수집 및 이용 목적<br/>
+                        2.  수집하는 개인정보의 항목 및 수집방법<br/>
+                        3.  개인정보의 제3자 제공<br/>
+                        4.  개인정보의 보유 및 이용기간<br/>
+                        5.  개인정보 파기절차와 방법<br/>
+                        6.  이용자의 권리, 의무 및 행사방법<br/>
+                        7.  개인정보의 기술적/관리적 보호 대책<br/>
+                        8.  개인정보보호 책임자 및 담당자<br/>
+                        9.  기타 부가방침<br/>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <p class="pop-btn colse" id="close">닫기</p>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </section>
+      </div>
+      <div class="tooltip">
+        core
+      </div>
+    </main>
+
+  </div>
+  <script>
+    $(document).ready(function () {
+      // 화면크기 설정
+      $(".home-section , .home-bg").css({
+        "height": $(window).height() + 'px' , "width": $(window).width() + 'px'
+      })
+
+      // 메뉴 버튼
+      $(".menu-toggle").click(function () {
+        $(this).toggleClass("active");
+        $(".menu-container").fadeToggle();
+
+      });
+
+      // 메뉴 마우스오버시 circle 생기기
+      $(".menu-item").mouseover(function () {
+        $(this).children(".circle").show().css({
+          "display": "inline-block"
+        });
+      }).mouseout(function () {
+        $(this).children(".circle").fadeOut()
+      });
+
+      // 다음 비디오로 넘어가기
+      $(function () {
+        var auds = document.getElementsByClassName('myvideo');
+        var audLength = auds.length;
+        for (var i = 0; i < audLength; i++) {
+          auds[i].addEventListener('ended', function (e) {
+            $(".quick-nav > li").eq($(".quick-nav > li.active").index() + 1).trigger("click");
+
+          });
+        }
+
+
+        // 퀵 버튼
+        var $nav = $(".quick-nav li"),
+          $contents = $(".home-section");
+        $nav.click(function (x) {
+          x.preventDefault();
+          //$(this).addClass('active').siblings().removeClass('active');
+          var idx = $(this).index();
+          var section = $contents.eq(idx)
+          var sectionDistance = section.offset().top;
+
+          $('html').stop().animate({
+            scrollTop: sectionDistance
+          });
+
+          if (idx < 3) {
+            $(".tooltip").text("core");
+            for (var i = 0; i < $(".myvideo").length; i++) {
+              var vid = $(".myvideo").eq(i).get(0);
+              if (i == idx) {
+                vid.play();
+              } else {
+                vid.pause();
+                vid.current_time = 0;
+              }
+            }
+          } else {
+            $(".tooltip").text("Solution")
+          }
+
+        });
+
+        $(window).scroll(function () {
+          $contents.each(function () {
+            if ($(this).offset().top <= $(window).scrollTop()) {
+              var idx = $(this).index();
+              $nav.removeClass('active');
+              $nav.eq(idx).addClass('active');
+            }
+          });
+        });
+      });
+
+      // tooltip
+      $('.tooltip').css('opacity', 0);
+      $('.quick-nav li').on('mouseover', function () {
+        if ($(this).hasClass('active')) {
+          var left = $(this).offset().left;
+          var top = $(this).offset().top;
+          $('.tooltip').css({
+            'left': left - $('.tooltip').width() - 15,
+            'top': top + 7,
+            'opacity': 1,
+          });
+        }
+      }).on('mouseleave', function () {
+        $('.tooltip').css({
+          'opacity': 0,
+        });
+      });
+
+      // popup
+      $(function(){
+      $(".popup-open").click(function(){
+        $("#popup").fadeIn();
+        $(".cont-project.apply").css({"backgroud-color":"rgba(0, 0, 0, 0.16)"})
+      });
+   
+      $("#close").click(function(){
+          modalClose();
+      });
+      function modalClose(){
+        $("#popup").fadeOut();
+      }
+    });
+
+
+      // contact 
+      $(".contact.cont-inq").on("click", function (e) {
+        $(".cont-project.cont").removeClass("hide");
+        $(".cont-project.apply .cont-top .cont-inner").addClass("hide");
+        $(".cont-project.apply .form-container").addClass("hide");
+        $(".cont-user").addClass("hide");
+        $(".cont-top").addClass("hide");
+        $(".home-section.cont-section").css("height", "564px")
+        $(".home-section.cont-section").find(".cont-tit").html("Create a service <span>with INFOIN</span>")
+
+      })
+
+      $(".contact.apply_inq").on("click", function (e) {
+        $(".cont-project.cont").addClass("hide");
+        $(".cont-project.apply .cont-top .cont-inner").addClass("hide");
+        $(".cont-project.apply .form-container").removeClass("hide");
+        $(".cont-project.apply").removeClass("hide");
+        $(".cont-user").addClass("hide");
+        $(".cont-project.cont .cont-top").addClass("hide");
+        $(".home-section.cont-section").css("height", "564px")
+        $(".home-section.cont-section").find(".cont-tit").html("Be an INFOIN'S <span>PEOPLE</span>")
+      })
+
+      const INVALID_KEYS = [13, 16, 17, 18, 19, 27, 33, 34, 35, 36, 37, 38, 39, 40, 45, 46];
+      $("#button1").on("click", function(e){
+        e.preventDefault();
+        $(".cont-user").removeClass("hide");
+        $(".cont-project.cont").addClass("hide");
+        $(".cont-project.cont .cont-top").addClass("hide");
+        $(".cont-project.apply .cont-top .cont-inner").addClass("hide");
+
+      })
+      $("#button3").on("click", function(e){
+        e.preventDefault();
+        $(".cont-user").removeClass("hide");
+        $(".cont-top").addClass("hide");
+        $(".cont-project.apply .cont-top .cont-inner").addClass("hide");
+        $(".cont-project.apply .form-container").addClass("hide");
+      })
+
+      //form1 starts
+      $("input[name=com_name]").on("keyup focusout focusin", function (e) {
+        const event_type = e.type;
+        if (event_type === 'focusin' || (event_type === 'keyup' && $(this).val().trim())) {
+          $(this).parent("p").css("color", "black");
+        } else if (event_type === 'focusout' && !$(this).val().trim()) {
+          $(this).parent("p").css("color", '');
+        }
+        const keyCode = e.keyCode;
+        if (INVALID_KEYS.lastIndexOf(keyCode) > -1) {
+          return false;
+        }
+        //input_disabler("input[name=com_tel]", "input[name=com_email]", "input[name=com_inquiry]", "textarea[name=com_content]", "input[name=uploaded_file]", );
+        FORM_METADATAS_CONTACT.setList(new FORM_DATA_OBJ("input[name=agreed]", "check"))
+        FORM_METADATAS_CONTACT.setList(new FORM_DATA_OBJ("input[name=uploaded_file]", "file"))
+        FORM_METADATAS_CONTACT.setList(new FORM_DATA_OBJ("textarea[name=com_content]", "plain_text"))
+        FORM_METADATAS_CONTACT.setList(new FORM_DATA_OBJ("input[name=com_inquiry]", "check"))
+        FORM_METADATAS_CONTACT.setList(new FORM_DATA_OBJ("input[name=com_email]", "email"))
+        FORM_METADATAS_CONTACT.setList(new FORM_DATA_OBJ("input[name=com_tel]", "phone"))
+        FORM_METADATAS_CONTACT.setList(new FORM_DATA_OBJ("input[name=com_name]", "plain_text"))
+        form_enabler_cascade(FORM_METADATAS_CONTACT, "input[name=agreed]:checked", "#button2");
+        FORM_METADATAS_CONTACT.emptyList();
+      })
+
+      $("input[name=com_tel").on("keydown", function (e) {
+        const keyCode = e.keyCode;
+        // 189 === -
+
+        if (INVALID_KEYS.lastIndexOf(keyCode) > -1 || keyCode == 189) {
+          return false;
+        }
+        if (check_is_onlyNum($(this).val())) {
+          const numStr = `${$(this).val()}`;
+          $(this).val(convert_num_to_tel(numStr));
+        }
+      })
+      $("input[name=com_tel]").on("keyup focusout focusin", function (e) {
+        const event_type = e.type;
+        if (event_type === 'focusin' || (event_type === 'keyup' && $(this).val().trim())) {
+          $(this).parent("p").css("color", "black");
+        } else if (event_type === 'focusout' && !$(this).val().trim()) {
+          $(this).parent("p").css("color", '');
+        }
+
+
+
+        //input_disabler("input[name=com_tel]", "input[name=com_email]", "input[name=com_inquiry]", "textarea[name=com_content]", "input[name=uploaded_file]", );
+        FORM_METADATAS_CONTACT.setList(new FORM_DATA_OBJ("input[name=agreed]", "check"))
+        FORM_METADATAS_CONTACT.setList(new FORM_DATA_OBJ("input[name=uploaded_file]", "file"))
+        FORM_METADATAS_CONTACT.setList(new FORM_DATA_OBJ("textarea[name=com_content]", "plain_text"))
+        FORM_METADATAS_CONTACT.setList(new FORM_DATA_OBJ("input[name=com_inquiry]", "check"))
+        FORM_METADATAS_CONTACT.setList(new FORM_DATA_OBJ("input[name=com_email]", "email"))
+        FORM_METADATAS_CONTACT.setList(new FORM_DATA_OBJ("input[name=com_tel]", "phone"))
+        form_enabler_cascade(FORM_METADATAS_CONTACT, "input[name=agreed]:checked", "#button2");
+        FORM_METADATAS_CONTACT.emptyList();
+      })
+      $("input[name=com_email]").on("keyup focusin focusout", function (e) {
+
+        const event_type = e.type;
+        if (event_type === 'focusin' || (event_type === 'keyup' && $(this).val().trim())) {
+          $(this).parent("p").css("color", "black");
+        } else if (event_type === 'focusout' && !$(this).val().trim()) {
+          $(this).parent("p").css("color", '');
+        }
+
+        const keyCode = e.keyCode;
+        if (INVALID_KEYS.lastIndexOf(keyCode) > -1) {
+          return false;
+        }
+        //input_disabler("input[name=com_tel]", "input[name=com_email]", "input[name=com_inquiry]", "textarea[name=com_content]", "input[name=uploaded_file]", );
+        FORM_METADATAS_CONTACT.setList(new FORM_DATA_OBJ("input[name=agreed]", "check"))
+        FORM_METADATAS_CONTACT.setList(new FORM_DATA_OBJ("input[name=uploaded_file]", "file"))
+        FORM_METADATAS_CONTACT.setList(new FORM_DATA_OBJ("textarea[name=com_content]", "plain_text"))
+        FORM_METADATAS_CONTACT.setList(new FORM_DATA_OBJ("input[name=com_inquiry]", "check"))
+        FORM_METADATAS_CONTACT.setList(new FORM_DATA_OBJ("input[name=com_email]", "email"))
+        form_enabler_cascade(FORM_METADATAS_CONTACT, "input[name=agreed]:checked", "#button2");
+        FORM_METADATAS_CONTACT.emptyList();
+      })
+      $("input[name=com_inquiry]").on("change focusin focusout", function (e) {
+        const event_type = e.type;
+        if (event_type === 'focusin' || (event_type === 'change' && $("input[name=com_inquiry]:checked")
+            .length > 0)) {
+          $(this).parent("div").css("color", "black");
+        } else if (event_type === 'focusout' && $("input[name=com_inquiry]:checked").length <= 0) {
+          $(this).parent("div").css("color", '');
+        }
+        //input_disabler("input[name=com_tel]", "input[name=com_email]", "input[name=com_inquiry]", "textarea[name=com_content]", "input[name=uploaded_file]", );
+        FORM_METADATAS_CONTACT.setList(new FORM_DATA_OBJ("input[name=agreed]", "check"))
+        FORM_METADATAS_CONTACT.setList(new FORM_DATA_OBJ("input[name=uploaded_file]", "file"))
+        FORM_METADATAS_CONTACT.setList(new FORM_DATA_OBJ("textarea[name=com_content]", "plain_text"))
+        FORM_METADATAS_CONTACT.setList(new FORM_DATA_OBJ("input[name=com_inquiry]", "check"))
+        form_enabler_cascade(FORM_METADATAS_CONTACT, "input[name=agreed]:checked", "#button2");
+        FORM_METADATAS_CONTACT.emptyList();
+      })
+      //TODO -> 특수 문자...
+      $("textarea[name=com_content]").on("keyup focusin focusout", function (e) {
+
+        const event_type = e.type;
+        if (event_type === 'focusin' || (event_type === 'keyup' && $(this).val().trim())) {
+          $(this).parent("div").css("color", "black");
+        } else if (event_type === 'focusout' && !$(this).val().trim()) {
+          $(this).parent("div").css("color", '');
+        }
+
+        const keyCode = e.keyCode;
+        if (INVALID_KEYS.lastIndexOf(keyCode) > -1) {
+
+          return false;
+        }
+        //input_disabler("input[name=com_tel]", "input[name=com_email]", "input[name=com_inquiry]", "textarea[name=com_content]", "input[name=uploaded_file]", );
+        FORM_METADATAS_CONTACT.setList(new FORM_DATA_OBJ("input[name=agreed]", "check"))
+        FORM_METADATAS_CONTACT.setList(new FORM_DATA_OBJ("input[name=uploaded_file]", "file"))
+        FORM_METADATAS_CONTACT.setList(new FORM_DATA_OBJ("textarea[name=com_content]", "plain_text"))
+        form_enabler_cascade(FORM_METADATAS_CONTACT, "input[name=agreed]:checked", "#button2");
+        FORM_METADATAS_CONTACT.emptyList();
+      })
+      const CONTACT_MAX_FILE_SIZE = 10 * 1024 * 1024;
+
+      $("input[name=uploaded_file][type=file]").on("change", function(e){
+        const fileSize = $(this)[0].files[0].size;
+        if(fileSize >= CONTACT_MAX_FILE_SIZE){
+          console.log("Invalid!");
+          $(this).val("");
+          return false;
+        }
+      })  
+      $("input[name=uploaded_file][type=file]").on("change focusin focusout", function (e) {
+
+
+        const event_type = e.type;
+        if (event_type === 'focusin' || (event_type === 'change' && $(this)[0].files[0])) {
+          $(this).parent("p").parent("div").css("color", "black");
+        } else if (event_type === 'focusout' && !$(this)[0].files[0]) {
+          $(this).parent("p").parent("div").css("color", '');
+        }
+
+
+        //input_disabler("input[name=com_tel]", "input[name=com_email]", "input[name=com_inquiry]", "textarea[name=com_content]", "input[name=uploaded_file]", );
+        FORM_METADATAS_CONTACT.setList(new FORM_DATA_OBJ("input[name=agreed]", "check"))
+        FORM_METADATAS_CONTACT.setList(new FORM_DATA_OBJ("input[name=uploaded_file]", "file"))
+        form_enabler_cascade(FORM_METADATAS_CONTACT, "input[name=agreed]:checked", "#button2");
+        FORM_METADATAS_CONTACT.emptyList();
+      })
+      $("input[name=agreed]").on("change focusin focusout", function (e) {
+
+        const event_type = e.type;
+        if (event_type === 'focusin' || (event_type === 'change' && $("input[name=agreed]:checked").length >
+          0)) {
+          $(this).parent("div").css("color", "black");
+        } else if (event_type === 'focusout' && $("input[name=agreed]:checked").length <= 0) {
+          $(this).parent("div").css("color", '');
+        }
+
+        //input_disabler("input[name=com_tel]", "input[name=com_email]", "input[name=com_inquiry]", "textarea[name=com_content]", "input[name=uploaded_file]", );
+        FORM_METADATAS_CONTACT.setList(new FORM_DATA_OBJ("input[name=agreed]", "check"))
+        form_enabler_cascade(FORM_METADATAS_CONTACT, "input[name=agreed]:checked", "#button2");
+        FORM_METADATAS_CONTACT.emptyList();
+      })
+      //form1 end
+
+      //form2 start
+
+      $("input[name=inquiry]").on("change focusin focusout", function (e) {
+        const event_type = e.type;
+        if (event_type === 'focusin' || (event_type === 'change' && $("input[name=inquiry]:checked").length >
+          0)) {
+          $(this).parent("div").parent("div").parent("div").children("span.question").css("color", "black");
+          $(this).parent("div.survey_item_chk").parent("div.survey_item").find("label").css("color", "black");
+        } else if (event_type === 'focusout' && $("input[name=inquiry]:checked").length <= 0) {
+          $(this).parent("div").parent("div").parent("div").children("span.question").css("color", "");
+          $(this).parent("div.survey_item_chk").parent("div.survey_item").find("label").css("color", "");
+        }
+
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("input[name=resume_agreed]", "check"))
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("textarea[name=content]", "plain_text"))
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("input[name=portfolio]", "file"))
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("input[name=selfIntro]", "file"))
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("input[name=resume]", "file"))
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("input[name=commuteDay]", "date"))
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("input[name=email]", "email"))
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("input[name=contact]", "phone"))
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("input[name=name]", "plain_text"))
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("input[name=inquiry]", "check"))
+        form_enabler_cascade(FORM_METADATAS_RESUME, "input[name=resume_agreed]:checked", "#button4");
+        FORM_METADATAS_RESUME.emptyList();
+      })
+      $("input[name=name]").on("keyup focusin focusout paste", function (e) {
+
+        const event_type = e.type;
+        if (event_type === 'focusin' || (event_type === 'keyup' && $(this).val().trim())) {
+          $(this).parent("div").parent("div").children("span.question").css("color", "black");
+          $(this).parent("div").parent("div").find("div.survey_itme").css("color", "black");
+        } else if (event_type === 'focusout' && !$(this).val().trim()) {
+          $(this).parent("div").parent("div").children("span.question").css("color", "");
+          $(this).parent("div").parent("div").find("div.survey_itme").css("color", "");
+
+        }
+
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("input[name=resume_agreed]", "check"))
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("textarea[name=content]", "plain_text"))
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("input[name=portfolio]", "file"))
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("input[name=selfIntro]", "file"))
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("input[name=resume]", "file"))
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("input[name=commuteDay]", "date"))
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("input[name=email]", "email"))
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("input[name=contact]", "phone"))
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("input[name=name]", "plain_text"))
+
+        form_enabler_cascade(FORM_METADATAS_RESUME, "input[name=resume_agreed]:checked", "#button4");
+        FORM_METADATAS_RESUME.emptyList();
+      })
+
+      $("input[name=contact").on("keydown", function (e) {
+        const keyCode = e.keyCode;
+        // 189 === -
+
+        if (INVALID_KEYS.lastIndexOf(keyCode) > -1 || keyCode == 189) {
+          return false;
+        }
+        if (check_is_onlyNum($(this).val())) {
+          const numStr = `${$(this).val()}`;
+          $(this).val(convert_num_to_tel(numStr));
+        }
+      })
+      $("input[name=contact]").on("keyup focusin focusout paste", function (e) {
+
+        const event_type = e.type;
+        if (event_type === 'focusin' || (event_type === 'keyup' && $(this).val().trim())) {
+          $(this).parent("div").parent("div").children("span.question").css("color", "black");
+          $(this).parent("div").parent("div").find("div.survey_itme").css("color", "black");
+        } else if (event_type === 'focusout' && !$(this).val().trim()) {
+          $(this).parent("div").parent("div").children("span.question").css("color", "");
+          $(this).parent("div").parent("div").find("div.survey_itme").css("color", "");
+
+        }
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("input[name=resume_agreed]", "check"))
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("textarea[name=content]", "plain_text"))
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("input[name=portfolio]", "file"))
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("input[name=selfIntro]", "file"))
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("input[name=resume]", "file"))
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("input[name=commuteDay]", "date"))
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("input[name=email]", "email"))
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("input[name=contact]", "phone"))
+
+        form_enabler_cascade(FORM_METADATAS_RESUME, "input[name=resume_agreed]:checked", "#button4");
+        FORM_METADATAS_RESUME.emptyList();
+      })
+      $("input[name=email]").on("keyup focusin focusout", function (e) {
+
+        const event_type = e.type;
+        if (event_type === 'focusin' || (event_type === 'keyup' && $(this).val().trim())) {
+          $(this).parent("div").parent("div").children("span.question").css("color", "black");
+          $(this).parent("div").parent("div").find("div.survey_itme").css("color", "black");
+        } else if (event_type === 'focusout' && !$(this).val().trim()) {
+          $(this).parent("div").parent("div").children("span.question").css("color", "");
+          $(this).parent("div").parent("div").find("div.survey_itme").css("color", "");
+
+        }
+
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("input[name=resume_agreed]", "check"))
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("textarea[name=content]", "plain_text"))
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("input[name=portfolio]", "file"))
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("input[name=selfIntro]", "file"))
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("input[name=resume]", "file"))
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("input[name=commuteDay]", "date"))
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("input[name=email]", "email"))
+
+        form_enabler_cascade(FORM_METADATAS_RESUME, "input[name=resume_agreed]:checked", "#button4");
+        FORM_METADATAS_RESUME.emptyList();
+      })
+      $("input[name=commuteDay").on("keydown", function (e) {
+        const keyCode = e.keyCode;
+        // 189 === -
+
+        if (INVALID_KEYS.lastIndexOf(keyCode) > -1 || keyCode == 189) {
+
+          return false;
+        }
+        if (check_is_onlyNum($(this).val()) && keyCode !== 8) {
+          $(this).val(convert_num_to_date($(this).val()))
+        }
+      })
+      $("input[name=commuteDay]").on("keyup focusin focusout", function (e) {
+        const event_type = e.type;
+        if (event_type === 'focusin' || (event_type === 'keyup' && $(this).val().trim())) {
+          $(this).parent("div").parent("div").children("span.question").css("color", "black");
+          $(this).parent("div").parent("div").find("div.survey_itme").css("color", "black");
+        } else if (event_type === 'focusout' && !$(this).val().trim()) {
+          $(this).parent("div").parent("div").children("span.question").css("color", "");
+          $(this).parent("div").parent("div").find("div.survey_itme").css("color", "");
+
+        }
+
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("input[name=resume_agreed]", "check"))
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("textarea[name=content]", "plain_text"))
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("input[name=portfolio]", "file"))
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("input[name=selfIntro]", "file"))
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("input[name=resume]", "file"))
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("input[name=commuteDay]", "date"))
+
+        form_enabler_cascade(FORM_METADATAS_RESUME, "input[name=resume_agreed]:checked", "#button4");
+        FORM_METADATAS_RESUME.emptyList();
+      })
+      const APPLY_MAX_FILE_SIZE = 5 * 1024 * 1024;
+      $("input[name=resume][type=file], input[name=selfIntro][type=file], input[name=portfolio][type=file], input[name=url][type=url]").on("change", function(e){
+        const fileSize = $(this)[0].files[0].size;
+        if(fileSize >= APPLY_MAX_FILE_SIZE){
+          console.log("Invalid!");
+          $(this).val("");
+          return false;
+        }
+      })
+      $("input[name=resume]").on("change focusin focusout", function (e) {
+        const event_type = e.type;
+        if (event_type === 'focusin' || (event_type === 'change' && $(this)[0].files[0])) {
+          $(this).parent("div").parent("div").children("span.question").css("color", "black");
+          $(this).parent("div").parent("div").find("div.survey_itme").css("color", "black");
+        } else if (event_type === 'focusout' && !$(this)[0].files[0]) {
+          $(this).parent("div").parent("div").children("span.question").css("color", "");
+          $(this).parent("div").parent("div").find("div.survey_itme").css("color", "");
+
+        }
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("input[name=resume_agreed]", "check"))
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("textarea[name=content]", "plain_text"))
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("input[name=portfolio]", "file"))
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("input[name=selfIntro]", "file"))
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("input[name=resume]", "file"))
+
+        form_enabler_cascade(FORM_METADATAS_RESUME, "input[name=resume_agreed]:checked", "#button4");
+        FORM_METADATAS_RESUME.emptyList();
+      })
+      $("input[name=selfIntro]").on("change focusin focusout", function (e) {
+
+        const event_type = e.type;
+        if (event_type === 'focusin' || (event_type === 'change' && $(this)[0].files[0])) {
+          $(this).parent("div").parent("div").children("span.question").css("color", "black");
+          $(this).parent("div").parent("div").find("div.survey_itme").css("color", "black");
+        } else if (event_type === 'focusout' && !$(this)[0].files[0]) {
+          $(this).parent("div").parent("div").children("span.question").css("color", "");
+          $(this).parent("div").parent("div").find("div.survey_itme").css("color", "");
+
+        }
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("input[name=resume_agreed]", "check"))
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("textarea[name=content]", "plain_text"))
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("input[name=portfolio]", "file"))
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("input[name=selfIntro]", "file"))
+
+        form_enabler_cascade(FORM_METADATAS_RESUME, "input[name=resume_agreed]:checked", "#button4");
+        FORM_METADATAS_RESUME.emptyList();
+      })
+      $("input[name=portfolio]").on("change focusin focusout", function (e) {
+
+        const event_type = e.type;
+        if (event_type === 'focusin' || (event_type === 'change' && $(this)[0].files[0])) {
+          $(this).parent("div").parent("div").children("span.question").css("color", "black");
+          $(this).parent("div").parent("div").find("div.survey_itme").css("color", "black");
+        } else if (event_type === 'focusout' && !$(this)[0].files[0]) {
+          $(this).parent("div").parent("div").children("span.question").css("color", "");
+          $(this).parent("div").parent("div").find("div.survey_itme").css("color", "");
+
+        }
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("input[name=resume_agreed]", "check"))
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("textarea[name=content]", "plain_text"))
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("input[name=portfolio]", "file"))
+
+        form_enabler_cascade(FORM_METADATAS_RESUME, "input[name=resume_agreed]:checked", "#button4");
+        FORM_METADATAS_RESUME.emptyList();
+      })
+      $("textarea[name=content]").on("keyup focusin focusout", function (e) {
+        const event_type = e.type;
+        if (event_type === 'focusin' || (event_type === 'keyup' && $(this).val().trim())) {
+          $(this).parent("div").parent("div").children("span.question").css("color", "black");
+          $(this).parent("div").parent("div").find("div.textarea").css("color", "black");
+        } else if (event_type === 'focusout' && !$(this).val().trim()) {
+          $(this).parent("div").parent("div").children("span.question").css("color", "");
+          $(this).parent("div").parent("div").find("div.textarea").css("color", "");
+
+        }
+
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("input[name=resume_agreed]", "check"))
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("textarea[name=content]", "plain_text"))
+
+        form_enabler_cascade(FORM_METADATAS_RESUME, "input[name=resume_agreed]:checked", "#button4");
+        FORM_METADATAS_RESUME.emptyList();
+      })
+      $("input[name=resume_agreed]").on("change focusin focusout", function (e) {
+        const event_type = e.type;
+        if (event_type === 'focusin' || (event_type === 'change' && $("input[name=resume_agreed]:checked")
+            .length > 0)) {
+          $(this).parent("div.agreement").css("color", "black");
+
+        } else if (event_type === 'focusout' && $("input[name=resume_agreed]:checked").length <= 0) {
+          $(this).parent("div.agreement").css("color", "");
+
+
+        }
+
+        FORM_METADATAS_RESUME.setList(new FORM_DATA_OBJ("input[name=resume_agreed]", "check"))
+
+        form_enabler_cascade(FORM_METADATAS_RESUME, "input[name=resume_agreed]:checked", "#button4");
+        FORM_METADATAS_RESUME.emptyList();
+      })
+      //form2 end
+
+      document.getElementById("button2").addEventListener("click", function (event) {
+        event.preventDefault();
+
+        // const SCREEN_SHOT_TARGET = document.getElementById("contactDiv");
+        // const AREA_SIZE = SCREEN_SHOT_TARGET.offsetHeight;
+        // const AREA_WIDTH = SCREEN_SHOT_TARGET.offsetWidth;
+        // const CONT_TOP_HEIGHT = document.querySelector(".cont-project.apply").offsetHeight;
+        // const CONTAINER_HEIGHT = document.querySelector(".cont-project.cont .cont-bottom").offsetHeight;
+        //const BOT_FORM_HEIGHT = document.querySelector(".cont-project.apply .form-container").offsetHeight;
+        // const BUFFER_HEIGHT = (CONTAINER_HEIGHT - AREA_SIZE) / 2;
+        // const y_coords = document.body.scrollHeight - (AREA_SIZE + CONT_TOP_HEIGHT + BUFFER_HEIGHT)
+        //console.log(AREA_SIZE, CONT_TOP_HEIGHT, BUFFER_HEIGHT, y_coords)
+        //doCapture(document.body, y_coords, window.innerWidth ,AREA_SIZE);
+
+        //sendEmail();
+        sendEmailWithFormData();
+      })
+
+      document.getElementById("button4").addEventListener("click", function (event) {
+        event.preventDefault();
+        //alert("success");
+
+
+        //sendEmail();
+        sendEmailWithFormDataResume();
+      })
+
+    });
+    const SERVER_DOMAIN = 'http://3.37.88.197:3000'
+    const LOCAL_DOAMIN = 'http://localhost:3000';
+
+    function sendEmail() {
+      const data = {
+        "compName": 'Test String',
+        "contact": 'Test String',
+        "email": 'Test String',
+        "content": 'Test String',
+        "inquiry": 'Test String',
+        "agreed": 'Test String',
+        "to": "wgtr9512@gmail.com",
+        "subject": "TEST2"
+      }
+      sendRequest(data, "/home/sendEmail/contact/make");
+    }
+
+    function sendEmailWithFormDataResume() {
+      const formData = new FormData(document.getElementById("apply_form"));
+
+      sendRequestWithFormData(formData, SERVER_DOMAIN + "/home/sendEmail/resume");
+    }
+
+    function sendEmailWithFormData() {
+      const formData = new FormData(document.getElementById("cont-form"));
+      // formData.set("compName", "Test String");
+      // formData.set("contact", "Test String");
+      // formData.set("email", "Test String");
+      // formData.set("content", "Test String");
+      // formData.set("inquiry", "Test String");
+      // formData.set("agreed", "Test String");
+      // formData.set("to", "Test String");
+      // formData.set("subject", "Test String");
+      // const file = document.getElementById("contactFile").files[0];
+      // formData.set("uploaded_file", file);
+      sendRequestWithFormData(formData, SERVER_DOMAIN + "/home/sendEmail/contact/makeWithFile");
+    }
+    // var timer;
+    // function doCapture(targetElem, y_coords, width, height){
+    //   if(timer){
+    //     clearTimeout(timer)
+    //   }
+    //   timer = setTimeout(function(){
+    //     const currDate = new Date();
+    //     const oriFileName = document.querySelector("[name=com_name]").value + "-" + currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate() + "-" + currDate.getHours() + "-" + currDate.getMinutes();
+
+    //     //html2canvas(document.body, {y : y_coords, width : window.innerWidth, height : AREA_SIZE})
+    //     html2canvas(targetElem, {y : y_coords, width : width, height : height, scale : 3}).then((canvas) => {
+    //       const base64image = canvas.toDataURL("image/png");
+    //       const imgURL = dataURItoBlob(base64image);
+    //       const data = {
+    //         "img" : base64image,
+    //         "oriExtender" : "png",
+    //         "orifileName" : oriFileName
+    //       }
+
+    //       sendRequest(data, "/home/sendEmail/contact/capture");
+
+    //     })
+
+    //   }, 500)
+    // }
+    function sendRequestWithFormData(data, url) {
+      const httpRequest = new XMLHttpRequest();
+      if (!httpRequest) {
+        alert("failed to send Email");
+        return false;
+      }
+      httpRequest.onreadystatechange = function () {
+        if (httpRequest.readyState == 4 && httpRequest.status == 200) {
+
+        }
+      }
+      httpRequest.open("POST", url);
+      //httpRequest.setRequestHeader("Content-Type", false);
+      httpRequest.setRequestHeader("enctype", "multipart/form-data");
+
+      httpRequest.send(data);
+    }
+
+    // function sendRequest(data, url){
+    //   const httpRequest = new XMLHttpRequest();
+    //   if(!httpRequest){
+    //     alert("failed to send Email");
+    //     return false;
+    //   }
+    //   httpRequest.onreadystatechange = function(){
+    //     if(httpRequest.readyState == 4 && httpRequest.status == 200){
+
+    //     }
+    //   }
+    //   httpRequest.open("POST", url);
+    //   httpRequest.setRequestHeader("Content-Type", "application/json");
+    //   httpRequest.send(JSON.stringify(data));
+    // }
+
+    // const capture = async () => {
+    //   const canvas = document.createElement("canvas");
+    //   const context = canvas.getContext("2d");
+    //   const video = document.createElement("video");
+
+    //   try{
+    //     const captureStream = await navigator.mediaDevices.getDisplayMedia();
+    //     video.srcObject = captureStream;
+    //     context.drawImage(video, 0, 0, window.innerWidth, window.innerHeight);
+    //     const frame = canvas.toDataURL("image/png");
+    //     captureStream.getTracks().forEach(track => track.stop());
+
+    //     const imgBlob = dataURItoBlob(frame);
+    //     const imgUrl = window.URL.createObjectURL(imgBlob);
+    //     const anchor = document.createElement("a");
+    //     anchor.href = imgUrl;
+    //     anchor.click();
+    //   }catch(err){
+    //     console.error(`Error ${err}`);
+    //   }
+    // }
+    // function dataURItoBlob(dataURI){
+    //   const byteString = atob(dataURI.split(",")[1]);
+
+    //   const mimeString = dataURI.split(",")[0].split(":")[1].split(";")[0];
+
+    //   const ab = new ArrayBuffer(byteString.length);
+    //   const ia = new Uint8Array(ab);
+    //   for(var i = 0 ; i < byteString.length; i++){
+    //     ia[i] = byteString.charCodeAt(i);
+    //   }
+    //   return new Blob([ab], {type : mimeString});
+    // }
+
+    class FORM_DATA_OBJ {
+      #selector;
+      #type;
+      constructor(selector, type) {
+        this.#selector = selector;
+        this.#type = type;
+      }
+      get selector() {
+        return this.#selector;
+      }
+      get type() {
+        return this.#type;
+      }
+    }
+    const FORM_METADATAS_CONTACT = (function () {
+      const list = [];
+      return {
+        setList(obj) {
+          if (obj instanceof FORM_DATA_OBJ) {
+            list.push(obj)
+          }
+        },
+        getList() {
+          const temp_list = [];
+          for (const elem of list) {
+            temp_list.push(new FORM_DATA_OBJ(elem.selector, elem.type))
+          }
+          return temp_list;
+        },
+        emptyList() {
+          list.length = 0;
+        },
+        popList() {
+          list.pop();
+        }
+      }
+    })();
+    const FORM_METADATAS_RESUME = (function () {
+      const list = [];
+      return {
+        setList(obj) {
+          if (obj instanceof FORM_DATA_OBJ) {
+            list.push(obj)
+          }
+        },
+        getList() {
+          const temp_list = [];
+          for (const elem of list) {
+            temp_list.push(new FORM_DATA_OBJ(elem.selector, elem.type))
+          }
+          return temp_list;
+        },
+        emptyList() {
+          list.length = 0;
+        },
+        popList() {
+          list.pop();
+        }
+      }
+    })();
+
+
+    function form_enabler_cascade(r_sorted_forms_metadata, endSelector, submitSelector) {
+      const meta_list = r_sorted_forms_metadata.getList();
+      const meta_list_len = meta_list.length - 1;
+      const i = meta_list_len;
+      const type = meta_list[i].type;
+      const selector = meta_list[i].selector;
+
+
+      let isInValid = false;
+      switch (type) {
+        case 'plain_text': {
+          const isInput = $(selector)[0].nodeName == 'INPUT';
+
+          if ($(selector).val().trim() && (i - 1 >= 0)) {
+            
+            hide_icon_tooltips(selector);
+
+            const next_selector = meta_list[i - 1].selector;
+            $(next_selector).prop("disabled", false);
+            r_sorted_forms_metadata.popList();
+
+            form_enabler_cascade(r_sorted_forms_metadata);
+          } else if (!$(selector).val().trim() || (isInput && $(selector).val().length > 25)) {
+
+            show_icon_tooltips(selector);
+
+            r_sorted_forms_metadata.popList();
+
+            isInValid = form_disabler_cascade(r_sorted_forms_metadata, submitSelector);
+          }
+          break;
+        }
+        case 'phone': {
+
+          const regex = /^010-[0-9]{4}-[0-9]{4}$/
+          if (regex.test($(selector).val()) && (i - 1 >= 0)) {
+
+            hide_icon_tooltips(selector);
+
+            const next_selector = meta_list[i - 1].selector;
+            $(next_selector).prop("disabled", false);
+            r_sorted_forms_metadata.popList();
+
+            form_enabler_cascade(r_sorted_forms_metadata);
+          } else if (!regex.test($(selector).val())) {
+
+            show_icon_tooltips(selector);
+
+            r_sorted_forms_metadata.popList();
+
+            isInValid = form_disabler_cascade(r_sorted_forms_metadata, submitSelector);
+          }
+          break;
+        }
+        case 'email': {
+
+          const regex = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+          if (regex.test($(selector).val()) && (i - 1 >= 0)) {
+
+            hide_icon_tooltips(selector);
+
+            const next_selector = meta_list[i - 1].selector;
+            $(next_selector).prop("disabled", false);
+            r_sorted_forms_metadata.popList();
+
+            form_enabler_cascade(r_sorted_forms_metadata);
+          } else if (!regex.test($(selector).val())) {
+
+            show_icon_tooltips(selector);
+
+            r_sorted_forms_metadata.popList();
+
+            isInValid = form_disabler_cascade(r_sorted_forms_metadata, submitSelector);
+          }
+          break;
+        }
+        case 'check': {
+
+          if ($(selector + ":checked").length >= 1 && (i - 1 >= 0)) {
+
+            hide_icon_tooltips(selector);
+
+            const next_selector = meta_list[i - 1].selector;
+            $(next_selector).prop("disabled", false);
+            r_sorted_forms_metadata.popList();
+
+            form_enabler_cascade(r_sorted_forms_metadata);
+
+          } else if ($(selector + ":checked").length < 1) {
+            r_sorted_forms_metadata.popList();
+
+            isInValid = form_disabler_cascade(r_sorted_forms_metadata, submitSelector);
+          }
+          break;
+        }
+        case 'file': {
+
+          const file = $(selector)[0].files[0];
+          if (file && (i - 1 >= 0)) {
+
+            hide_icon_tooltips(selector);
+
+            const next_selector = meta_list[i - 1].selector;
+            $(next_selector).prop("disabled", false);
+            r_sorted_forms_metadata.popList();
+
+            form_enabler_cascade(r_sorted_forms_metadata);
+
+          } else if (!file) {
+            r_sorted_forms_metadata.popList();
+
+            isInValid = form_disabler_cascade(r_sorted_forms_metadata, submitSelector);
+          }
+          break;
+        }
+        case 'date': {
+
+          if ($(selector).val().trim() && (i - 1 >= 0) && isValidDate($(selector).val())) {
+
+            hide_icon_tooltips(selector);
+
+            const next_selector = meta_list[i - 1].selector;
+            $(next_selector).prop("disabled", false);
+            r_sorted_forms_metadata.popList();
+
+            form_enabler_cascade(r_sorted_forms_metadata);
+          } else if (!$(selector).val().trim() || !isValidDate($(selector).val())) {
+
+            show_icon_tooltips(selector);
+
+            r_sorted_forms_metadata.popList();
+
+            isInValid = form_disabler_cascade(r_sorted_forms_metadata, submitSelector);
+          }
+          break;
+        }
+      }
+      //끝 부분 이라면... 전부 체크한다...
+      if (i - 1 < 0 && $(endSelector).length > 0) {
+
+        $(submitSelector).prop("disabled", false);
+      } else if ($(endSelector).length > 0) {
+        $(submitSelector).prop("disabled", true);
+      }
+    }
+
+    function form_disabler_cascade(r_sorted_forms_metadata, submitSelecotr) {
+      const meta_list = r_sorted_forms_metadata.getList();
+      const meta_list_len = meta_list.length - 1;
+      for (let i = meta_list_len; i >= 0; i--) {
+        const type = meta_list[i].type;
+        const selector = meta_list[i].selector;
+
+        $(selector).prop("disabled", true);
+        hide_icon_tooltips(selector);
+      }
+      $(submitSelecotr).prop("disabled", true);
+      return true;
+    }
+
+    function show_icon_tooltips(invalidSelector) {
+
+      const parent_find_alert = $(invalidSelector).parent().find(".alert");
+      const next_alert = $(invalidSelector).next(".alert");
+      let alert_jq_elem;
+      if (parent_find_alert.length >= 2 || next_alert) {
+        alert_jq_elem = next_alert;
+      } else if (parent_find_alert.length == 1) {
+        alert_jq_elem = parent_find_alert;
+      }
+      if (alert_jq_elem && alert_jq_elem.length == 1) {
+        
+        $(invalidSelector).addClass("red");
+        alert_jq_elem.removeClass("hide");
+      }
+
+
+    }
+
+    function hide_icon_tooltips(validSelector) {
+      
+      const parent_find_alert = $(validSelector).parent().find(".alert");
+      const next_alert = $(validSelector).next(".alert");
+      let alert_jq_elem;
+      if (parent_find_alert.length >= 2 || next_alert) {
+        alert_jq_elem = next_alert;
+      } else if (parent_find_alert.length == 1) {
+        alert_jq_elem = parent_find_alert;
+      }
+      if (alert_jq_elem && alert_jq_elem.length == 1) {
+        
+        alert_jq_elem.addClass("hide");
+        $(validSelector).removeClass("red");
+      }
+      
+    }
+
+    function check_is_onlyNum(str) {
+      const no_bar_str = str.replace(/-/gi, "");
+
+      const strLen = no_bar_str.length;
+      for (let i = 0; i < strLen; i++) {
+        if (no_bar_str[i].charCodeAt(0) >= 48 && no_bar_str[i].charCodeAt(0) <= 57) {
+          continue;
+        } else {
+          return false;
+        }
+      }
+      return true;
+    }
+
+    function convert_num_to_tel(numStrWithBar) {
+      const numStr = numStrWithBar.replace(/-/gi, "");
+      const strLen = numStr.length;
+      let outputStr = '';
+
+      if (strLen >= 8 && strLen < 10) {
+        outputStr = `${numStr.slice(0, 3)}-${numStr.slice(3, 6)}-${numStr.slice(6, strLen)}`
+      } else if (strLen >= 10) {
+        outputStr = `${numStr.slice(0, 3)}-${numStr.slice(3, 7)}-${numStr.slice(7, strLen)}`
+      } else if (strLen >= 4) {
+        outputStr = `${numStr.slice(0, 3)}-${numStr.slice(3, strLen)}`
+      } else {
+        outputStr = numStr;
+      }
+      return outputStr;
+    }
+
+    function convert_num_to_date(numStrWithBar) {
+      const numStr = numStrWithBar.replace(/-/gi, "");
+      const strLen = numStr.length;
+      let outputStr = '';
+      if (strLen <= 4) {
+        outputStr = numStr;
+        return outputStr;
+      }
+
+      //적어도 년은 다 있을 경우부터...
+      const year = numStr.substring(0, 4);
+      const rest_year = numStr.substring(4, strLen);
+
+      const fst_month_num_CHAR_CODE = rest_year[0]?.charCodeAt(0);
+      const scnd_month_num_CHAR_CODE = rest_year[1]?.charCodeAt(0);
+
+      let month = '';
+      let rest_month = '';
+      // 48 == 0
+      // 49 == 1
+      if (fst_month_num_CHAR_CODE == 48) {
+        month = rest_year.substring(0, 2);
+        rest_month = month.length == 1 ? null : rest_year.substring(2, strLen - 4)
+      } else if (fst_month_num_CHAR_CODE == 49 && scnd_month_num_CHAR_CODE) {
+        month = rest_year.substring(0, 2);
+        rest_month = month.length == 1 ? null : rest_year.substring(2, strLen - 4)
+      } else if (fst_month_num_CHAR_CODE == 49 && !scnd_month_num_CHAR_CODE) {
+        month = rest_year.substring(0, 2);
+        rest_month = month.length == 1 ? null : rest_year.substring(2, strLen - 4)
+      } else if (fst_month_num_CHAR_CODE >= 49 && fst_month_num_CHAR_CODE <= 57) {
+        month = `0${rest_year.substring(0, 1)}`
+        rest_month = rest_year.substring(1, strLen - 4)
+      }
+      outputStr = `${year}-${month}-${rest_month ? rest_month : ''}`;
+      return outputStr;
+    }
+
+    function isValidDate(dateStr) {
+      const date_tokens = dateStr.split("-");
+      if (date_tokens.length == 3 && check_is_onlyNum(dateStr)) {
+        const input_date = new Date();
+        input_date.setFullYear(date_tokens[0])
+        input_date.setMonth(date_tokens[1] - 1)
+
+        console.log(input_date)
+        const input_day = new Date();
+        input_day.setFullYear(date_tokens[0])
+        input_day.setMonth(date_tokens[1] - 1)
+        input_day.setDate(date_tokens[2])
+        console.log(input_day)
+
+        if(input_date.getMonth() == input_day.getMonth()){
+          return true;
+        }else{
+          return false;
+        }
+      } else {
+        return false
+      }
+    }
+  </script>
+  <script id="rendered-js">
+    // sentence-area
+    function _toArray(arr) {
+      return Array.isArray(arr) ? arr : Array.from(arr);
+    }
+
+    function makeSpans(selector) {
+      var _document$querySelect = document.querySelectorAll(selector);
+      var _document$querySelect2 = _toArray(_document$querySelect);
+      var elements = _document$querySelect2.slice(0);
+
+      return elements.map(function (element) {
+        var text = element.innerText.split('');
+        var spans = text.map(function (letter) {
+          return '<span>' + letter + '</span>';
+        }).join('');
+        return element.innerHTML = spans;
+      });
+    }
+
+    makeSpans('.main-transition');
+    //# sourceURL=pen.js
+  </script>
+
+
+</body>
+
+</html>

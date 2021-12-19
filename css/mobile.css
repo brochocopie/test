@@ -1,0 +1,57 @@
+*{
+    margin:0;
+    padding:0;
+  }
+  
+  html{
+    width:100%;
+    height:100%;
+  }
+  
+  body{
+    background-color:#111;
+    width:100vw;
+    max-width:100%;
+    height:100%;
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    -ms-overflow-style: none;
+    -webkit-overflow-style: none;
+    -moz-overflow-style: none;
+    -o-overflow-style: none;
+  }
+  
+  body::-webkit-scrollbar { display: none; }
+  
+  a{
+    text-decoration:none;
+    color:#fff;
+  }
+  a:visited{
+    color:#fff;
+  }
+  
+  li{
+    list-style:none;
+  }
+  
+  input{
+    border:none;
+    background-color:transparent;
+  }
+  
+  input:focus { outline:none; }
+  
+  fieldset{
+    border:none;
+  }
+  
+  legend{
+    display:none;
+  }
+  
+  input[type="checkbox"] , textarea{
+    background-color:transparent;
+  }
+  
